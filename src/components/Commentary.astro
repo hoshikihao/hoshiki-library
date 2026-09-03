@@ -1,0 +1,38 @@
+---
+import { renderMiniMarkdown } from '../lib/mini-md';
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+const html = renderMiniMarkdown(text);
+---
+
+<aside class="commentary" aria-label="星树浩的点评">
+  <p class="commentary__label">星树浩 · 点评</p>
+  <div class="commentary__body" set:html={html} />
+</aside>
+
+<style>
+  .commentary {
+    margin-top: var(--s-12);
+    padding: var(--s-6);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-left: 3px solid var(--c-accent);
+    border-radius: var(--radius-sm);
+  }
+  .commentary__label {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-faint);
+  }
+  .commentary__body :global(p) {
+    margin: 0 0 var(--s-3);
+    color: var(--c-ink-soft);
+  }
+  .commentary__body :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

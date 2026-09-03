@@ -1,0 +1,78 @@
+/* Kami「Parchment」设计 token —— 暖米白纸感 */
+:root {
+  /* 画布与面 */
+  --c-canvas: #f5f4ed; /* 页面底色 */
+  --c-surface: #faf9f5; /* 卡片 / 浮层 */
+  --c-sand: #e8e6dc; /* 分隔、次级面 */
+
+  /* 唯一强调色：靛蓝（用量 < 5%） */
+  --c-accent: #1b365d;
+  --c-accent-weak: #e4ecf5;
+
+  /* 暖中性文字色阶 */
+  --c-ink: #23201a; /* 正文近黑 */
+  --c-ink-soft: #4a453c; /* 次级文字 */
+  --c-ink-faint: #8a8273; /* 辅助 / 元信息 */
+  --c-line: #ddd9cc; /* 描边 */
+
+  /* 标签底色 */
+  --c-tag-a: #eef2f7;
+  --c-tag-b: #e4ecf5;
+
+  /* 错误 */
+  --c-error: #b53333;
+
+  /* 字体：CJK 与拉丁分别成栈，便于一行切换。
+     当前 CJK 用霞鹜文楷（OFL，免费可商用），经 ZeoSeven CDN 动态切片加载
+     （见 BaseLayout.astro 的 <link>）。
+     若日后取得仓耳今楷商用授权：把 --font-serif-cjk 第一项换成 'TsangerJinKai02'，
+     并把字体 woff2 放入 public/fonts/ + 补一段 @font-face。 */
+  --font-serif-cjk: 'LXGW WenKai', 'Source Han Serif SC', 'Songti SC', 'STSong',
+    'SimSun';
+  --font-serif-latin: 'Charter', 'Georgia', 'Times New Roman';
+  /* 通用关键字 serif 必须在最后一位，否则会截断其后的字体 */
+  --font-serif: var(--font-serif-latin), var(--font-serif-cjk), serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* 排版尺度 */
+  --fs-display: clamp(2rem, 1.4rem + 2.5vw, 2.75rem);
+  --fs-h1: clamp(1.55rem, 1.2rem + 1.4vw, 2rem);
+  --fs-h2: 1.3rem;
+  --fs-h3: 1.1rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-label: 0.78rem;
+
+  --lh-tight: 1.2;
+  --lh-snug: 1.45;
+  --lh-read: 1.85; /* 正文中文行距 */
+
+  /* 4pt 间距系统 */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-24: 6rem;
+
+  /* 版心 */
+  --w-page: 46rem;
+  --w-read: 38rem; /* 文章阅读区 */
+  --w-wide: 60rem;
+
+  --radius: 8px;
+  --radius-sm: 4px;
+  --shadow-float: 0 1px 3px rgba(35, 32, 26, 0.08), 0 4px 16px rgba(35, 32, 26, 0.06);
+}
+
+/* 取得仓耳今楷授权后，放开并补齐：
+@font-face {
+  font-family: 'TsangerJinKai02';
+  src: url('/fonts/TsangerJinKai02.woff2') format('woff2');
+  font-weight: 400 500;
+  font-display: swap;
+}
+*/

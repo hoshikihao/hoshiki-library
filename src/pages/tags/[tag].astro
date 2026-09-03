@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', (e) => !e.data.draft);
+  const tags = new Set<string>();
+  for (const a of articles) for (const t of a.data.tags) tags.add(t);
+
+  return [...tags].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      entries: articles
+        .filter((a) => a.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, entries } = Astro.props;
+---
+
+<BaseLayout title={`标签：${tag}`} description={`标签「${tag}」下的 ${entries.length} 篇文章。`}>
+  <div class="page stack">
+    <header>
+      <p class="meta"><a href="/tags">← 全部标签</a></p>
+      <h1>#{tag}</h1>
+      <p class="meta">共 {entries.length} 篇</p>
+    </header>
+
+    <div>
+      {
+        entries.map((e) => (
+          <ArticleCard id={e.id} data={e.data} body={e.body ?? ''} showCategory />
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import StarTree from './StarTree.astro';
+import { SITE } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <StarTree size={20} />
+    <p>
+      {SITE.title} · {SITE.slogan}<br />
+      <span class="meta">
+        © {year} {SITE.author} ·
+        <a href="/about">关于</a> ·
+        <a href="/rss.xml">RSS</a> ·
+        <a href={SITE.repoUrl} target="_blank" rel="noopener">GitHub</a>
+      </span>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--s-24);
+    border-top: 1px solid var(--c-line);
+    color: var(--c-ink-faint);
+  }
+  .site-footer__inner {
+    max-width: var(--w-wide);
+    margin-inline: auto;
+    padding: var(--s-8) var(--s-6);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--s-3);
+  }
+  .site-footer p {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: var(--lh-snug);
+  }
+</style>

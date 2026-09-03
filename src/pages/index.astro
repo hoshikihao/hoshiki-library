@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SearchBox from '../components/SearchBox.astro';
+import { CATEGORIES, SITE } from '../consts';
+---
+
+<BaseLayout>
+  <div class="home">
+    <div class="masthead">
+      <h1>{SITE.title}</h1>
+      <p class="masthead__slogan">{SITE.slogan}</p>
+    </div>
+
+    <div class="home__search">
+      <SearchBox autofocus />
+    </div>
+
+    <nav class="entries" aria-label="栏目入口">
+      {
+        CATEGORIES.map((c) => (
+          <a class="entry" href={`/${c.id}`}>
+            <span class="entry__name">{c.name}</span>
+            <span class="entry__blurb">{c.blurb}</span>
+          </a>
+        ))
+      }
+      <a class="entry" href="/books">
+        <span class="entry__name">书籍</span>
+        <span class="entry__blurb">在读 · 读完 · 想读</span>
+      </a>
+    </nav>
+  </div>
+</BaseLayout>
+
+<style>
+  .home {
+    max-width: var(--w-page);
+    margin-inline: auto;
+    min-height: min(72vh, 640px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--s-16) var(--s-6);
+  }
+
+  .masthead {
+    text-align: center;
+  }
+  .masthead h1 {
+    font-size: var(--fs-display);
+    margin-bottom: var(--s-2);
+    letter-spacing: 0.06em;
+  }
+  .masthead__slogan {
+    margin: 0;
+    color: var(--c-ink-soft);
+    letter-spacing: 0.12em;
+  }
+
+  .home__search {
+    margin: var(--s-8) auto 0;
+    max-width: 34rem;
+  }
+
+  .entries {
+    margin-top: var(--s-8);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-3);
+  }
+  .entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: var(--s-4) var(--s-2);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    text-align: center;
+  }
+  .entry:hover {
+    border-color: var(--c-accent);
+  }
+  .entry__name {
+    font-size: var(--fs-h3);
+    color: var(--c-ink);
+  }
+  .entry__blurb {
+    font-size: var(--fs-label);
+    color: var(--c-ink-faint);
+  }
+
+  @media (max-width: 34rem) {
+    .entries {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

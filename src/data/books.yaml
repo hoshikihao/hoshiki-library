@@ -1,0 +1,27 @@
+# 书籍清单：顶层为 id -> 书。id 用英文/拼音短横线。
+# 字段：title / author / cover / status(reading|read|want) / note / resourceUrl
+# cover 可用 /covers/xxx.svg（放 public/covers/）或远程图片 URL
+
+zhi-shen-shi-nei:
+  title: 置身事内
+  author: 兰小欢
+  cover: /covers/placeholder-a.svg
+  status: read
+  note: 把地方政府的钱从哪来、到哪去讲得清清楚楚。
+  resourceUrl: https://example.com/replace-me
+
+wan-li:
+  title: 万历十五年
+  author: 黄仁宇
+  cover: /covers/placeholder-b.svg
+  status: reading
+  note: 一个看似平淡的年份，如何照出整个体制的困局。
+  resourceUrl: https://example.com/replace-me
+
+xiang-yu-de-shi-jie:
+  title: 乡土中国
+  author: 费孝通
+  cover: /covers/placeholder-c.svg
+  status: want
+  note: 想弄明白“熟人社会”这四个字到底意味着什么。
+  resourceUrl: https://example.com/replace-me

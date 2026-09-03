@@ -1,0 +1,98 @@
+---
+import { BOOK_STATUS, type BookStatus } from '../consts';
+
+interface Book {
+  title: string;
+  author: string;
+  cover: string;
+  status: BookStatus;
+  note: string;
+  resourceUrl: string;
+}
+interface Props {
+  books: { id: string; data: Book }[];
+}
+const { books } = Astro.props;
+
+const groups = BOOK_STATUS.map((s) => ({
+  ...s,
+  items: books.filter((b) => b.data.status === s.id),
+})).filter((g) => g.items.length > 0);
+---
+
+<div class="shelf stack">
+  {
+    groups.map((g) => (
+      <section>
+        <h2 class="shelf__heading">
+          {g.name}
+          <span class="meta">（{g.items.length}）</span>
+        </h2>
+        <ul class="shelf__grid">
+          {g.items.map((b) => (
+            <li class="book">
+              <a
+                class="book__cover"
+                href={b.data.resourceUrl}
+                target="_blank"
+                rel="noopener"
+                aria-label={`${b.data.title} · 下载资源`}
+              >
+                <img src={b.data.cover} alt={`《${b.data.title}》封面`} loading="lazy" />
+              </a>
+              <p class="book__title">{b.data.title}</p>
+              <p class="meta">{b.data.author}</p>
+              <p class="book__note">{b.data.note}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .shelf__heading {
+    font-size: var(--fs-h3);
+    padding-bottom: var(--s-2);
+    border-bottom: 1px solid var(--c-line);
+  }
+  .shelf__grid {
+    list-style: none;
+    margin: var(--s-6) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--s-8) var(--s-6);
+  }
+  .book__cover {
+    display: block;
+    aspect-ratio: 2 / 3;
+    background: var(--c-sand);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-float);
+  }
+  .book__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .book__cover:hover {
+    outline: 2px solid var(--c-accent);
+  }
+  .book__title {
+    margin: var(--s-3) 0 0;
+    font-weight: 500;
+    line-height: var(--lh-snug);
+  }
+  .book .meta {
+    margin: 2px 0 0;
+  }
+  .book__note {
+    margin: var(--s-2) 0 0;
+    font-size: var(--fs-small);
+    color: var(--c-ink-soft);
+    line-height: var(--lh-snug);
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = await getCollection('articles', (e) => !e.data.draft);
+const counts = new Map<string, number>();
+for (const a of articles) {
+  for (const t of a.data.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+}
+const tags = [...counts.entries()].sort(
+  (a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'zh'),
+);
+---
+
+<BaseLayout title="标签" description="按主题浏览全部文章标签。">
+  <div class="page stack">
+    <header>
+      <h1>标签</h1>
+      <p class="meta">共 {tags.length} 个标签</p>
+    </header>
+
+    <ul class="tag-cloud">
+      {
+        tags.map(([t, n]) => (
+          <li>
+            <a class="tag" href={`/tags/${encodeURIComponent(t)}`}>
+              {t} <span class="tag-cloud__n">{n}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .tag-cloud {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+  .tag-cloud .tag {
+    font-size: var(--fs-small);
+  }
+  .tag-cloud__n {
+    color: var(--c-ink-faint);
+  }
+</style>

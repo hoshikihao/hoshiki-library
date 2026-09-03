@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Commentary from '../../components/Commentary.astro';
+import { CATEGORY_MAP, type CategoryId } from '../../consts';
+import { excerpt } from '../../lib/excerpt';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles', (e) => !e.data.draft);
+  return articles.map((entry) => ({
+    params: { category: entry.data.category, slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, author, date, sourceUrl, commentary, tags } = entry.data;
+const meta = CATEGORY_MAP[entry.data.category as CategoryId];
+const dateStr = date.toISOString().slice(0, 10);
+---
+
+<BaseLayout title={title} description={excerpt(entry.body ?? '', 140)}>
+  <article class="page page--read article">
+    <nav class="meta article__crumb">
+      <a href={`/${meta.id}`}>{meta.name}</a>
+    </nav>
+
+    <h1>{title}</h1>
+    <p class="meta article__byline">
+      {author && <>{author} · </>}收录于 {dateStr}
+    </p>
+
+    <div class="article__body" data-pagefind-body>
+      <Content />
+    </div>
+
+    {
+      sourceUrl && (
+        <p class="article__source">
+          <a class="btn btn--ghost" href={sourceUrl} target="_blank" rel="noopener">
+            阅读原文 ↗
+          </a>
+        </p>
+      )
+    }
+
+    {commentary && <Commentary text={commentary} />}
+
+    {
+      tags.length > 0 && (
+        <p class="article__tags">
+          {tags.map((t) => (
+            <a class="tag" href={`/tags/${encodeURIComponent(t)}`}>
+              {t}
+            </a>
+          ))}
+        </p>
+      )
+    }
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    padding-top: var(--s-12);
+  }
+  .article__crumb {
+    margin-bottom: var(--s-4);
+  }
+  .article__crumb a {
+    color: var(--c-ink-faint);
+  }
+  .article__byline {
+    margin-top: calc(-1 * var(--s-2));
+    margin-bottom: var(--s-8);
+  }
+  .article__body :global(p) {
+    margin: 0 0 var(--s-6);
+  }
+  .article__body :global(h2),
+  .article__body :global(h3) {
+    margin-top: var(--s-8);
+  }
+  .article__body :global(img) {
+    border-radius: var(--radius-sm);
+  }
+  .article__source {
+    margin-top: var(--s-8);
+  }
+  .article__tags {
+    margin-top: var(--s-12);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+</style>

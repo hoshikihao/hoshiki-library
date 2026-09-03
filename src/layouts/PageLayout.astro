@@ -1,0 +1,34 @@
+---
+import BaseLayout from './BaseLayout.astro';
+// 供 Markdown 页面（如 /about）使用的排版容器
+interface Props {
+  frontmatter?: { title?: string; description?: string };
+  title?: string;
+  description?: string;
+}
+const fm = Astro.props.frontmatter ?? Astro.props;
+---
+
+<BaseLayout title={fm.title} description={fm.description}>
+  <div class="page page--read prose">
+    <slot />
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .prose {
+    padding-top: var(--s-12);
+  }
+  .prose h1 {
+    font-size: var(--fs-h1);
+    margin-bottom: var(--s-8);
+  }
+  .prose h2 {
+    margin-top: var(--s-8);
+  }
+  .prose p,
+  .prose ul,
+  .prose ol {
+    margin: 0 0 var(--s-6);
+  }
+</style>

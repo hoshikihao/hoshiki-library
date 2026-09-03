@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookShelf from '../components/BookShelf.astro';
+import { BOOK_BOT } from '../consts';
+
+const books = await getCollection('books');
+---
+
+<BaseLayout title="书籍" description="星树浩的书架：在读、读完、想读，每本一句话。">
+  <div class="page page--wide stack">
+    <header>
+      <h1>书籍</h1>
+      <p class="meta">点封面取资源</p>
+    </header>
+
+    <div class="bot">
+      <div>
+        <p class="bot__title">在 Telegram 找书</p>
+        <p class="meta">{BOOK_BOT.hint}</p>
+      </div>
+      <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">打开 Bot ↗</a>
+    </div>
+
+    <div data-pagefind-body>
+      <BookShelf books={books} />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .bot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+    padding: var(--s-4) var(--s-6);
+    background: var(--c-accent-weak);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-sm);
+    flex-wrap: wrap;
+  }
+  .bot__title {
+    margin: 0;
+    font-weight: 500;
+  }
+  .bot .meta {
+    margin: 2px 0 0;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+interface Props {
+  autofocus?: boolean;
+  value?: string;
+}
+const { autofocus = false, value = '' } = Astro.props;
+---
+
+<form class="search" action="/search" method="get" role="search">
+  <label class="visually-hidden" for="q">搜索文章与书籍</label>
+  <input
+    type="search"
+    id="q"
+    name="q"
+    value={value}
+    placeholder="搜索文章、书名、作者、标签…"
+    autocomplete="off"
+    autofocus={autofocus}
+  />
+  <button type="submit" class="btn">搜索</button>
+</form>
+
+<style>
+  .search {
+    display: flex;
+    gap: var(--s-2);
+    width: 100%;
+  }
+  .search input {
+    flex: 1;
+    padding: var(--s-3) var(--s-4);
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    color: var(--c-ink);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-sm);
+  }
+  .search input:focus {
+    outline: 2px solid var(--c-accent-weak);
+    border-color: var(--c-accent);
+  }
+</style>

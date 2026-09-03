@@ -1,0 +1,78 @@
+---
+import { CATEGORY_MAP } from '../consts';
+import { excerpt } from '../lib/excerpt';
+
+interface Props {
+  id: string;
+  data: {
+    title: string;
+    category: 'gumu' | 'xinzhi' | 'shixing';
+    tags: string[];
+    date: Date;
+    author?: string;
+  };
+  body: string;
+  /** 是否显示所属栏目（标签聚合页需要） */
+  showCategory?: boolean;
+}
+
+const { id, data, body, showCategory = false } = Astro.props;
+const href = `/${data.category}/${id}`;
+const dateStr = data.date.toISOString().slice(0, 10);
+---
+
+<article class="card">
+  <h3 class="card__title"><a href={href}>{data.title}</a></h3>
+  <p class="card__excerpt">{excerpt(body)}</p>
+  <div class="card__foot">
+    <span class="meta">
+      {showCategory && <>{CATEGORY_MAP[data.category].name} · </>}
+      {data.author && <>{data.author} · </>}收录于 {dateStr}
+    </span>
+    {
+      data.tags.length > 0 && (
+        <span class="card__tags">
+          {data.tags.map((t) => (
+            <a class="tag" href={`/tags/${encodeURIComponent(t)}`}>
+              {t}
+            </a>
+          ))}
+        </span>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .card {
+    padding: var(--s-6) 0;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .card__title {
+    margin-bottom: var(--s-2);
+    font-size: var(--fs-h3);
+  }
+  .card__title a {
+    color: var(--c-ink);
+    text-decoration: none;
+  }
+  .card__title a:hover {
+    color: var(--c-accent);
+  }
+  .card__excerpt {
+    margin: 0 0 var(--s-3);
+    color: var(--c-ink-soft);
+    line-height: var(--lh-snug);
+  }
+  .card__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2) var(--s-4);
+  }
+  .card__tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+</style>
