@@ -3,7 +3,8 @@
 ## 项目
 
 - 站点:星树文库,读书与好文库,公开站,域名 `read.hoshikihao.com`
-- 技术:Astro 静态站(`output: 'static'`),Cloudflare Pages 部署
+- 技术:Astro 静态站(`output: 'static'`),Cloudflare Workers(静态资源托管)部署
+- 仓库:`github.com/hoshikihao/hoshiki-library`(public)
 - Slogan:星树文库 · 甄选天下好文好书
 
 ## 技术约束
@@ -53,7 +54,14 @@
 
 - 加文章:建 `src/content/articles/<slug>.md` → 填 frontmatter → 粘正文 → 可选写 `commentary`
 - 加书:`src/data/books.yaml` 追加一条
-- push 到主分支即触发 Cloudflare Pages 构建部署
+- push 到 `main` 即触发 Cloudflare Workers Builds 构建部署
+
+## 部署
+
+- Cloudflare Workers,静态资源模式,配置见 `wrangler.jsonc`(`assets.directory: ./dist`,无 Worker 代码)
+- CI:Cloudflare Workers Builds 连 GitHub,build command `npm run build`,deploy command `npx wrangler deploy`
+- 本地手动部署:`npm run deploy`(需先 `wrangler login`)
+- 以后要 SSR / API:装 `@astrojs/cloudflare`,`wrangler.jsonc` 加 `main` 指向 Worker 入口,`astro.config` 改 `output: 'server'`
 
 ## 开发与验证
 

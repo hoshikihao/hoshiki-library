@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
+    "deploy": "npm run build && wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "esbuild": true
   },
   "devDependencies": {
-    "pagefind": "^1.5.2"
+    "pagefind": "^1.5.2",
+    "wrangler": "^4.128.0"
   }
 }
