@@ -7,5 +7,9 @@
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page"
-  }
+  },
+  // 自定义域名（hoshikihao.com 的 DNS 已在 Cloudflare，首次 deploy 自动绑定）。
+  // 若首次部署因域名绑定失败：先注释掉 routes 部署一次，再到
+  // Worker → Settings → Domains & Routes 手动加 read.hoshikihao.com。
+  "routes": [{ "pattern": "read.hoshikihao.com", "custom_domain": true }]
 }
