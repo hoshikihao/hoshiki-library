@@ -6,6 +6,7 @@ export const SITE = {
   description: '星树浩的私人文库：收藏的好文与好书，每篇附一段点评，附原文跳转。',
   url: 'https://read.hoshikihao.com',
   author: '星树浩',
+  authorUrl: 'https://hoshikihao.com',
   repoUrl: 'https://github.com/hoshikihao/hoshiki-library',
   xUrl: 'https://x.com/hoshikihao',
 } as const;
