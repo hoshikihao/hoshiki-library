@@ -44,16 +44,33 @@ for (const b of books) counts[b.data.status]++;
       </div>
     </section>
 
-    <div class="shelf-controls" hidden>
-      <div class="seg" role="group" aria-label="阅读状态">
-        <button type="button" data-status="all" aria-pressed="true">全部</button>
-        {counts.reading > 0 && <button type="button" data-status="reading">在读</button>}
-        {counts.read > 0 && <button type="button" data-status="read">读完</button>}
-        {counts.want > 0 && <button type="button" data-status="want">想读</button>}
-      </div>
-      <div class="seg" role="group" aria-label="排列方式">
-        <button type="button" data-view="grid" aria-pressed="true">网格</button>
-        <button type="button" data-view="list">列表</button>
+    <div class="shelf-bar" hidden>
+      <div class="shelf-menu-wrap">
+        <button
+          type="button"
+          class="shelf-menu-toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M2 4h9M2 8h6M2 12h3" />
+            <circle cx="13" cy="4" r="1.6" fill="currentColor" stroke="none" />
+            <circle cx="10" cy="8" r="1.6" fill="currentColor" stroke="none" />
+            <circle cx="7" cy="12" r="1.6" fill="currentColor" stroke="none" />
+          </svg>
+          <span class="shelf-menu-label">网格 · 全部</span>
+        </button>
+        <div class="shelf-menu" role="menu" hidden>
+          <p class="shelf-menu__group">排列</p>
+          <button type="button" role="menuitemradio" data-view="grid" aria-checked="true">网格</button>
+          <button type="button" role="menuitemradio" data-view="list" aria-checked="false">列表</button>
+          <hr />
+          <p class="shelf-menu__group">阅读状态</p>
+          <button type="button" role="menuitemradio" data-status="all" aria-checked="true">全部</button>
+          {counts.reading > 0 && <button type="button" role="menuitemradio" data-status="reading" aria-checked="false">在读</button>}
+          {counts.read > 0 && <button type="button" role="menuitemradio" data-status="read" aria-checked="false">读完</button>}
+          {counts.want > 0 && <button type="button" role="menuitemradio" data-status="want" aria-checked="false">想读</button>}
+        </div>
       </div>
     </div>
 
@@ -64,22 +81,32 @@ for (const b of books) counts[b.data.status]++;
 </BaseLayout>
 
 <script>
-  const controls = document.querySelector<HTMLElement>('.shelf-controls');
+  const bar = document.querySelector<HTMLElement>('.shelf-bar');
   const shelf = document.querySelector<HTMLElement>('[data-shelf]');
-  if (controls && shelf) {
-    controls.hidden = false;
+  if (bar && shelf) {
+    bar.hidden = false;
+
+    const toggle = bar.querySelector<HTMLElement>('.shelf-menu-toggle')!;
+    const menu = bar.querySelector<HTMLElement>('.shelf-menu')!;
+    const label = bar.querySelector<HTMLElement>('.shelf-menu-label')!;
+    const items = [...menu.querySelectorAll<HTMLElement>('button[role="menuitemradio"]')];
+    const sections = [...shelf.querySelectorAll<HTMLElement>('section[data-status]')];
+
+    const VIEW_NAME: Record<string, string> = { grid: '网格', list: '列表' };
+    const STATUS_NAME: Record<string, string> = {
+      all: '全部',
+      reading: '在读',
+      read: '读完',
+      want: '想读',
+    };
+
     const KEY = 'hoshiki:books-view';
     const state = { status: 'all', view: 'grid' };
     try {
       Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}'));
     } catch {}
-
-    const sections = [...shelf.querySelectorAll<HTMLElement>('section[data-status]')];
-    const statusBtns = [...controls.querySelectorAll<HTMLElement>('[data-status]')];
-    const viewBtns = [...controls.querySelectorAll<HTMLElement>('[data-view]')];
-
-    // 所选状态若已无书（例如书单变动），回退到「全部」
-    if (state.status !== 'all' && !statusBtns.some((b) => b.dataset.status === state.status)) {
+    // 所选状态若已无书（书单变动），回退「全部」
+    if (state.status !== 'all' && !items.some((b) => b.dataset.status === state.status)) {
       state.status = 'all';
     }
 
@@ -88,23 +115,43 @@ for (const b of books) counts[b.data.status]++;
       for (const sec of sections) {
         sec.hidden = state.status !== 'all' && sec.dataset.status !== state.status;
       }
-      for (const b of statusBtns) {
-        b.setAttribute('aria-pressed', String(b.dataset.status === state.status));
+      for (const b of items) {
+        const on = b.dataset.view === state.view || b.dataset.status === state.status;
+        b.setAttribute('aria-checked', String(on));
       }
-      for (const b of viewBtns) {
-        b.setAttribute('aria-pressed', String(b.dataset.view === state.view));
-      }
+      label.textContent = `${VIEW_NAME[state.view]} · ${STATUS_NAME[state.status]}`;
     }
 
-    controls.addEventListener('click', (e) => {
+    function openMenu() {
+      menu.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      menu.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', () => {
+      menu.hidden ? openMenu() : closeMenu();
+    });
+    menu.addEventListener('click', (e) => {
       const btn = (e.target as HTMLElement).closest<HTMLElement>('button');
       if (!btn) return;
-      if (btn.dataset.status) state.status = btn.dataset.status;
       if (btn.dataset.view) state.view = btn.dataset.view;
+      if (btn.dataset.status) state.status = btn.dataset.status;
       try {
         localStorage.setItem(KEY, JSON.stringify(state));
       } catch {}
       apply();
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.hidden && !bar.contains(e.target as Node)) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        closeMenu();
+        toggle.focus();
+      }
     });
 
     apply();
@@ -151,34 +198,78 @@ for (const b of books) counts[b.data.status]++;
     flex-shrink: 0;
   }
 
-  .shelf-controls {
+  .shelf-bar {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--s-4);
-    justify-content: space-between;
+    justify-content: flex-end;
   }
-  .seg {
+  .shelf-menu-wrap {
+    position: relative;
+  }
+  .shelf-menu-toggle {
     display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: var(--s-2) var(--s-3);
+    background: var(--c-surface);
     border: 1px solid var(--c-line);
     border-radius: var(--radius-sm);
-    overflow: hidden;
-  }
-  .seg button {
-    appearance: none;
-    border: 0;
-    border-left: 1px solid var(--c-line);
-    background: var(--c-surface);
     color: var(--c-ink-soft);
     font-family: inherit;
     font-size: var(--fs-small);
-    padding: var(--s-2) var(--s-4);
     cursor: pointer;
   }
-  .seg button:first-child {
-    border-left: 0;
+  .shelf-menu-toggle:hover {
+    border-color: var(--c-accent);
   }
-  .seg button[aria-pressed='true'] {
-    background: var(--c-accent);
-    color: #fff;
+
+  .shelf-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + var(--s-2));
+    z-index: 10;
+    min-width: 9rem;
+    padding: var(--s-2);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-float);
+  }
+  .shelf-menu__group {
+    margin: var(--s-2) var(--s-2) var(--s-1);
+    font-size: var(--fs-label);
+    letter-spacing: 0.06em;
+    color: var(--c-ink-faint);
+  }
+  .shelf-menu hr {
+    margin: var(--s-2) 0;
+    border: 0;
+    border-top: 1px solid var(--c-line);
+  }
+  .shelf-menu button {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    width: 100%;
+    padding: var(--s-2);
+    background: none;
+    border: 0;
+    border-radius: var(--radius-sm);
+    color: var(--c-ink);
+    font-family: inherit;
+    font-size: var(--fs-small);
+    text-align: left;
+    cursor: pointer;
+  }
+  .shelf-menu button::before {
+    content: '';
+    width: 1em;
+    flex-shrink: 0;
+    color: var(--c-accent);
+  }
+  .shelf-menu button[aria-checked='true']::before {
+    content: '✓';
+  }
+  .shelf-menu button:hover {
+    background: var(--c-accent-weak);
   }
 </style>
