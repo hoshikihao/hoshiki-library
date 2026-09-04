@@ -19,10 +19,10 @@ const books = await getCollection('books');
         想找电子版：<strong>安娜的档案</strong>（Anna's Archive）和
         <strong>Z-Library</strong> 是两个常用的聚合搜索站，按书名或 ISBN 搜，大多数书都能找到。
       </p>
-      <p>找不到的，用下面的 bot 把书名发我，我从自己的库里找。</p>
+      <p>找不到的，在 Telegram 上把书名发给「{BOOK_BOT.name}」，从我的库里找。</p>
       <p>
         <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">
-          在 Telegram 找书 ↗
+          在 Telegram 找{BOOK_BOT.name} ↗
         </a>
         <span class="meta">{BOOK_BOT.hint}</span>
       </p>

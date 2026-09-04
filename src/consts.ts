@@ -38,8 +38,9 @@ export const BOOK_STATUS: { id: BookStatus; name: string }[] = [
   { id: 'want', name: '想读' },
 ];
 
-// Telegram 找书 bot（书架页顶部入口）
+// Telegram 找书 bot（书架页入口）
 export const BOOK_BOT = {
-  url: 'https://t.me/your_bot_username',
-  hint: '在 Telegram 里直接搜书名，即可拿到资源。',
+  name: '小树',
+  url: 'https://t.me/HoshikiBot',
+  hint: '把书名发给它，从我的库里找。',
 } as const;
