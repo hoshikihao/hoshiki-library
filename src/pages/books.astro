@@ -7,6 +7,9 @@ import { BOOK_BOT } from '../consts';
 import xiaoshuAvatar from '../assets/xiaoshu-avatar.jpg';
 
 const books = await getCollection('books');
+
+const counts = { reading: 0, read: 0, want: 0 };
+for (const b of books) counts[b.data.status]++;
 ---
 
 <BaseLayout title="书籍" description="星树浩的书架：在读、读完、想读，每本一句话。">
@@ -38,11 +41,72 @@ const books = await getCollection('books');
       </p>
     </section>
 
+    <div class="shelf-controls" hidden>
+      <div class="seg" role="group" aria-label="阅读状态">
+        <button type="button" data-status="all" aria-pressed="true">全部</button>
+        {counts.reading > 0 && <button type="button" data-status="reading">在读</button>}
+        {counts.read > 0 && <button type="button" data-status="read">读完</button>}
+        {counts.want > 0 && <button type="button" data-status="want">想读</button>}
+      </div>
+      <div class="seg" role="group" aria-label="排列方式">
+        <button type="button" data-view="grid" aria-pressed="true">网格</button>
+        <button type="button" data-view="list">列表</button>
+      </div>
+    </div>
+
     <div data-pagefind-body>
       <BookShelf books={books} />
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const controls = document.querySelector<HTMLElement>('.shelf-controls');
+  const shelf = document.querySelector<HTMLElement>('[data-shelf]');
+  if (controls && shelf) {
+    controls.hidden = false;
+    const KEY = 'hoshiki:books-view';
+    const state = { status: 'all', view: 'grid' };
+    try {
+      Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}'));
+    } catch {}
+
+    const sections = [...shelf.querySelectorAll<HTMLElement>('section[data-status]')];
+    const statusBtns = [...controls.querySelectorAll<HTMLElement>('[data-status]')];
+    const viewBtns = [...controls.querySelectorAll<HTMLElement>('[data-view]')];
+
+    // 所选状态若已无书（例如书单变动），回退到「全部」
+    if (state.status !== 'all' && !statusBtns.some((b) => b.dataset.status === state.status)) {
+      state.status = 'all';
+    }
+
+    function apply() {
+      shelf.classList.toggle('is-list', state.view === 'list');
+      for (const sec of sections) {
+        sec.hidden = state.status !== 'all' && sec.dataset.status !== state.status;
+      }
+      for (const b of statusBtns) {
+        b.setAttribute('aria-pressed', String(b.dataset.status === state.status));
+      }
+      for (const b of viewBtns) {
+        b.setAttribute('aria-pressed', String(b.dataset.view === state.view));
+      }
+    }
+
+    controls.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('button');
+      if (!btn) return;
+      if (btn.dataset.status) state.status = btn.dataset.status;
+      if (btn.dataset.view) state.view = btn.dataset.view;
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+      } catch {}
+      apply();
+    });
+
+    apply();
+  }
+</script>
 
 <style>
   .resources {
@@ -70,5 +134,36 @@ const books = await getCollection('books');
     object-fit: cover;
     border: 1px solid var(--c-line);
     flex-shrink: 0;
+  }
+
+  .shelf-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-4);
+    justify-content: space-between;
+  }
+  .seg {
+    display: inline-flex;
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .seg button {
+    appearance: none;
+    border: 0;
+    border-left: 1px solid var(--c-line);
+    background: var(--c-surface);
+    color: var(--c-ink-soft);
+    font-family: inherit;
+    font-size: var(--fs-small);
+    padding: var(--s-2) var(--s-4);
+    cursor: pointer;
+  }
+  .seg button:first-child {
+    border-left: 0;
+  }
+  .seg button[aria-pressed='true'] {
+    background: var(--c-accent);
+    color: #fff;
   }
 </style>
