@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookShelf from '../components/BookShelf.astro';
 import { BOOK_BOT } from '../consts';
+import xiaoshuAvatar from '../assets/xiaoshu-avatar.jpg';
 
 const books = await getCollection('books');
 ---
@@ -20,7 +22,15 @@ const books = await getCollection('books');
         <strong>Z-Library</strong> 是两个常用的聚合搜索站，按书名或 ISBN 搜，大多数书都能找到。
       </p>
       <p>找不到的，在 Telegram 上把书名发给「{BOOK_BOT.name}」，从我的库里找。</p>
-      <p>
+      <p class="bot-row">
+        <Image
+          class="bot-avatar"
+          src={xiaoshuAvatar}
+          alt={`${BOOK_BOT.name}（Telegram bot）头像`}
+          width={88}
+          height={88}
+          loading="lazy"
+        />
         <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">
           在 Telegram 找{BOOK_BOT.name} ↗
         </a>
@@ -46,9 +56,19 @@ const books = await getCollection('books');
   }
   .resources p:last-child {
     margin-bottom: 0;
+  }
+  .bot-row {
     display: flex;
     align-items: center;
     gap: var(--s-3);
     flex-wrap: wrap;
+  }
+  .bot-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--c-line);
+    flex-shrink: 0;
   }
 </style>
