@@ -3,6 +3,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="搜索" description="搜索星树文库的全部文章与书籍。">
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  </Fragment>
+
   <div class="page stack">
     <h1>搜索</h1>
     <div id="search" data-pagefind-ignore></div>
@@ -10,27 +14,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 </BaseLayout>
 
-<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
 <script is:inline>
-  window.addEventListener('DOMContentLoaded', () => {
-    if (typeof PagefindUI === 'undefined') {
-      document.getElementById('search').innerHTML =
-        '<p class="meta">搜索索引尚未生成（本地 <code>astro dev</code> 下不可用，请用 <code>astro build</code> + <code>astro preview</code> 预览）。</p>';
-      return;
+  (() => {
+    const mount = document.getElementById('search');
+
+    // 页面一加载就预热 Pagefind 运行时（wasm + 索引），用户还在打字时就绪
+    import('/pagefind/pagefind.js')
+      .then((m) => m.init && m.init())
+      .catch(() => {});
+
+    const start = () => {
+      if (typeof PagefindUI === 'undefined') {
+        mount.innerHTML =
+          '<p class="meta">搜索索引尚未生成（本地 <code>astro dev</code> 下不可用，请用 <code>astro build</code> + <code>astro preview</code> 预览）。</p>';
+        return;
+      }
+      const ui = new PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        showImages: false,
+        translations: {
+          placeholder: '搜索文章、书名、作者、标签…',
+          zero_results: '没有找到与「[SEARCH_TERM]」相关的内容',
+        },
+      });
+      const q = new URLSearchParams(location.search).get('q');
+      if (q) ui.triggerSearch(q);
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else {
+      start();
     }
-    const ui = new PagefindUI({
-      element: '#search',
-      showSubResults: true,
-      showImages: false,
-      translations: {
-        placeholder: '搜索文章、书名、作者、标签…',
-        zero_results: '没有找到与「[SEARCH_TERM]」相关的内容',
-      },
-    });
-    const q = new URLSearchParams(location.search).get('q');
-    if (q) ui.triggerSearch(q);
-  });
+  })();
 </script>
 
 <style is:global>

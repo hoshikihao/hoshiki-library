@@ -5,6 +5,13 @@ import { CATEGORIES, SITE } from '../consts';
 ---
 
 <BaseLayout>
+  {/* 首页以搜索为核心：空闲时预取 Pagefind 运行时，让 /search 少等 */}
+  <Fragment slot="head">
+    <link rel="prefetch" href="/pagefind/pagefind-ui.js" />
+    <link rel="prefetch" href="/pagefind/pagefind-ui.css" />
+    <link rel="prefetch" href="/pagefind/wasm.unknown.pagefind" />
+  </Fragment>
+
   <div class="home">
     <div class="masthead">
       <h1>{SITE.title}</h1>

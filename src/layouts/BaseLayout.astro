@@ -36,6 +36,7 @@ const canonical = new URL(Astro.url.pathname, SITE.url).href;
       title={SITE.title}
       href="/rss.xml"
     />
+    <slot name="head" />
   </head>
   <body>
     <Header />
