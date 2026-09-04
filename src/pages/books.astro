@@ -11,16 +11,22 @@ const books = await getCollection('books');
   <div class="page page--wide stack">
     <header>
       <h1>书籍</h1>
-      <p class="meta">点封面取资源</p>
+      <p class="meta">在读 · 读完 · 想读，每本一句话</p>
     </header>
 
-    <div class="bot">
-      <div>
-        <p class="bot__title">在 Telegram 找书</p>
-        <p class="meta">{BOOK_BOT.hint}</p>
-      </div>
-      <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">打开 Bot ↗</a>
-    </div>
+    <section class="resources">
+      <p>
+        想找电子版：<strong>安娜的档案</strong>（Anna's Archive）和
+        <strong>Z-Library</strong> 是两个常用的聚合搜索站，按书名或 ISBN 搜，大多数书都能找到。
+      </p>
+      <p>找不到的，用下面的 bot 把书名发我，我从自己的库里找。</p>
+      <p>
+        <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">
+          在 Telegram 找书 ↗
+        </a>
+        <span class="meta">{BOOK_BOT.hint}</span>
+      </p>
+    </section>
 
     <div data-pagefind-body>
       <BookShelf books={books} />
@@ -29,22 +35,20 @@ const books = await getCollection('books');
 </BaseLayout>
 
 <style>
-  .bot {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--s-4);
-    padding: var(--s-4) var(--s-6);
-    background: var(--c-accent-weak);
+  .resources {
+    padding: var(--s-6);
+    background: var(--c-surface);
     border: 1px solid var(--c-line);
     border-radius: var(--radius-sm);
+  }
+  .resources p {
+    margin: 0 0 var(--s-3);
+  }
+  .resources p:last-child {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
     flex-wrap: wrap;
-  }
-  .bot__title {
-    margin: 0;
-    font-weight: 500;
-  }
-  .bot .meta {
-    margin: 2px 0 0;
   }
 </style>

@@ -38,11 +38,11 @@
 
 `src/data/books.yaml` 顶层是 `id: {书}` 的映射,不是数组。id 用英文/拼音短横线。
 
-- `title` `author` `cover` `status` 必填
+- `title` `author` `cover` `status` `note` 全部必填
 - `status` 取值 `reading` | `read` | `want`
-- `note` 一句话短评,必填
-- `resourceUrl` 封面点击跳转地址,必填
+- `note` 一句话短评
 - `cover` 用 `/covers/xxx`(放 `public/covers/`)或远程图片 URL
+- 不提供每本书的下载链接;书籍页只放 Telegram bot 入口 + 获取电子书的简短说明
 
 ## 命名
 
@@ -76,7 +76,6 @@
 - 中文正文用霞鹜文楷(LXGW WenKai,OFL,免费可商用),经 ZeoSeven CDN 加载,见 `BaseLayout.astro`
 - 字体栈变量在 `src/styles/tokens.css`;换字体只改 `--font-serif-cjk` + 视情况加 `@font-face`
 
-## 待办红线(上线前必须处理)
+## 待办(上线前处理)
 
-- 书籍下载链接与 Telegram bot 的传播风险(用户已知情承担)
-- 占位内容替换:`sample-shixing.md` 假 sourceUrl、`books.yaml` 的 example.com、`consts.ts` 的 BOOK_BOT.url、`about.md` 联系方式
+- 占位内容替换:`sample-shixing.md` 假 sourceUrl、`consts.ts` 的 `BOOK_BOT.url`(真实 bot)、`about.md` 联系方式、书籍封面(现为占位 SVG)

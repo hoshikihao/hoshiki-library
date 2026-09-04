@@ -30,7 +30,6 @@ const books = defineCollection({
     cover: z.string(), // /covers/xxx.jpg 或远程 URL
     status: z.enum(['reading', 'read', 'want']),
     note: z.string(), // 一句话短评
-    resourceUrl: z.string().url(), // 封面点击跳转
   }),
 });
 

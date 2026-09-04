@@ -7,7 +7,6 @@ interface Book {
   cover: string;
   status: BookStatus;
   note: string;
-  resourceUrl: string;
 }
 interface Props {
   books: { id: string; data: Book }[];
@@ -31,15 +30,9 @@ const groups = BOOK_STATUS.map((s) => ({
         <ul class="shelf__grid">
           {g.items.map((b) => (
             <li class="book">
-              <a
-                class="book__cover"
-                href={b.data.resourceUrl}
-                target="_blank"
-                rel="noopener"
-                aria-label={`${b.data.title} · 下载资源`}
-              >
+              <div class="book__cover">
                 <img src={b.data.cover} alt={`《${b.data.title}》封面`} loading="lazy" />
-              </a>
+              </div>
               <p class="book__title">{b.data.title}</p>
               <p class="meta">{b.data.author}</p>
               <p class="book__note">{b.data.note}</p>
@@ -77,9 +70,6 @@ const groups = BOOK_STATUS.map((s) => ({
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .book__cover:hover {
-    outline: 2px solid var(--c-accent);
   }
   .book__title {
     margin: var(--s-3) 0 0;
