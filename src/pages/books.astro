@@ -20,12 +20,15 @@ for (const b of books) counts[b.data.status]++;
     </header>
 
     <section class="resources">
-      <p>
-        电子版自己搜：<a class="src" href="https://annas-archive.cc" target="_blank" rel="noopener">Anna's Archive</a>
+      <p class="resources__lead">电子书按书名或作者搜，三个渠道：</p>
+
+      <div class="resources__row">
+        <a class="src" href="https://annas-archive.cc" target="_blank" rel="noopener">Anna's Archive</a>
         <a class="src" href="https://z-library.bz" target="_blank" rel="noopener">Z-Library</a>
-        按书名或 ISBN 搜即可。
-      </p>
-      <p class="bot-row">
+        <span class="meta">聚合站，自己搜</span>
+      </div>
+
+      <div class="resources__row">
         <Image
           class="bot-avatar"
           src={xiaoshuAvatar}
@@ -37,8 +40,8 @@ for (const b of books) counts[b.data.status]++;
         <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">
           在 Telegram 找{BOOK_BOT.name} ↗
         </a>
-        <span class="meta">找不到的把书名发给它</span>
-      </p>
+        <span class="meta">找不到的发给它，从我的库里找</span>
+      </div>
     </section>
 
     <div class="shelf-controls" hidden>
@@ -114,18 +117,23 @@ for (const b of books) counts[b.data.status]++;
     background: var(--c-surface);
     border: 1px solid var(--c-line);
     border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
   }
-  .resources p {
-    margin: 0 0 var(--s-3);
+  .resources__lead {
+    margin: 0;
+    color: var(--c-ink-soft);
   }
-  .resources p:last-child {
-    margin-bottom: 0;
+  .resources__row {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    flex-wrap: wrap;
   }
   .src {
-    display: inline-block;
-    margin-right: var(--s-2);
-    padding: 1px 8px;
-    border-radius: var(--radius-sm);
+    padding: 2px 10px;
+    border-radius: 999px;
     background: var(--c-accent);
     color: #fff;
     text-decoration: none;
@@ -133,12 +141,6 @@ for (const b of books) counts[b.data.status]++;
   }
   .src:hover {
     background: var(--c-ink);
-  }
-  .bot-row {
-    display: flex;
-    align-items: center;
-    gap: var(--s-3);
-    flex-wrap: wrap;
   }
   .bot-avatar {
     width: 44px;
