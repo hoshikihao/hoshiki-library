@@ -42,5 +42,5 @@ export const BOOK_STATUS: { id: BookStatus; name: string }[] = [
 export const BOOK_BOT = {
   name: '小树',
   url: 'https://t.me/HoshikiBot',
-  hint: '把书名发给它，从我的库里找。',
+  hint: '我的随身小书童',
 } as const;

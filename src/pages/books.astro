@@ -25,7 +25,7 @@ for (const b of books) counts[b.data.status]++;
       <div class="resources__row">
         <a class="src" href="https://annas-archive.cc" target="_blank" rel="noopener">Anna's Archive</a>
         <a class="src" href="https://z-library.bz" target="_blank" rel="noopener">Z-Library</a>
-        <span class="meta">聚合站，自己搜</span>
+        <span class="meta">世界上最大的 2 个免费图书馆</span>
       </div>
 
       <div class="resources__row">
@@ -38,9 +38,9 @@ for (const b of books) counts[b.data.status]++;
           loading="lazy"
         />
         <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">
-          在 Telegram 找{BOOK_BOT.name} ↗
+          Telegram bot {BOOK_BOT.name} ↗
         </a>
-        <span class="meta">找不到的发给它，从我的库里找</span>
+        <span class="meta">{BOOK_BOT.hint}</span>
       </div>
     </section>
 
