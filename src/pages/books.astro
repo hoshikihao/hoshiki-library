@@ -21,10 +21,10 @@ for (const b of books) counts[b.data.status]++;
 
     <section class="resources">
       <p>
-        想找电子版：<strong>安娜的档案</strong>（Anna's Archive）和
-        <strong>Z-Library</strong> 是两个常用的聚合搜索站，按书名或 ISBN 搜，大多数书都能找到。
+        电子版自己搜：<a class="src" href="https://annas-archive.org" target="_blank" rel="noopener">Anna's Archive</a>
+        <a class="src" href="https://z-lib.io" target="_blank" rel="noopener">Z-Library</a>
+        按书名或 ISBN 搜即可。
       </p>
-      <p>找不到的，在 Telegram 上把书名发给「{BOOK_BOT.name}」，从我的库里找。</p>
       <p class="bot-row">
         <Image
           class="bot-avatar"
@@ -37,7 +37,7 @@ for (const b of books) counts[b.data.status]++;
         <a class="btn" href={BOOK_BOT.url} target="_blank" rel="noopener">
           在 Telegram 找{BOOK_BOT.name} ↗
         </a>
-        <span class="meta">{BOOK_BOT.hint}</span>
+        <span class="meta">找不到的把书名发给它</span>
       </p>
     </section>
 
@@ -120,6 +120,19 @@ for (const b of books) counts[b.data.status]++;
   }
   .resources p:last-child {
     margin-bottom: 0;
+  }
+  .src {
+    display: inline-block;
+    margin-right: var(--s-2);
+    padding: 1px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--c-accent);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95em;
+  }
+  .src:hover {
+    background: var(--c-ink);
   }
   .bot-row {
     display: flex;
