@@ -300,4 +300,10 @@ function dailyImage(id: string) {
     text-align: left;
   }
 
+  /* 手机上顶部留白按视口高度算太大了，单独收一下，字号/胶囊/卡片大小不变 */
+  @media (max-width: 480px) {
+    .ghome__center {
+      margin-top: var(--s-8);
+    }
+  }
 </style>
