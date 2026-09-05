@@ -15,9 +15,10 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, author, date, sourceUrl, commentary, tags } = entry.data;
+const { title, author, date, written, sourceUrl, commentary, tags } = entry.data;
 const meta = CATEGORY_MAP[entry.data.category as CategoryId];
 const dateStr = date.toISOString().slice(0, 10);
+const when = written ?? `收录于 ${dateStr}`;
 ---
 
 <BaseLayout title={title} description={excerpt(entry.body ?? '', 140)}>
@@ -28,7 +29,7 @@ const dateStr = date.toISOString().slice(0, 10);
 
     <h1>{title}</h1>
     <p class="meta article__byline">
-      {author && <>{author} · </>}收录于 {dateStr}
+      {author && <>{author} · </>}{when}
     </p>
 
     <div class="article__body" data-pagefind-body>
@@ -71,9 +72,13 @@ const dateStr = date.toISOString().slice(0, 10);
   .article__crumb a {
     color: var(--c-ink-faint);
   }
+  .article h1 {
+    text-align: center;
+  }
   .article__byline {
     margin-top: calc(-1 * var(--s-2));
     margin-bottom: var(--s-8);
+    text-align: center;
   }
   .article__body :global(p) {
     margin: 0 0 var(--s-6);

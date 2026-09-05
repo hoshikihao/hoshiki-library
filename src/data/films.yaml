@@ -5,27 +5,27 @@
 qian_yu_qian_xun:
   title: 千与千寻
   director: 宫崎骏
-  poster: /posters/placeholder-a.svg
+  poster: https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg
   type: anime
   note: 每隔几年重看一次，每次看到的东西都不一样。
 
 san_ti:
   title: 三体
   director: 杨磊
-  poster: /posters/placeholder-b.svg
+  poster: https://image.tmdb.org/t/p/w500/buXHm2shttFRQIBsCFlv5L2TmKh.jpg
   type: series
   note: 原著党，看看改编能守住多少。
 
 blade_runner_2049:
   title: 银翼杀手 2049
   director: 丹尼斯·维伦纽瓦
-  poster: /posters/placeholder-c.svg
+  poster: https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg
   type: movie
   note: 听说摄影美得不像话，一直没找到整块时间看。
 
 planet_earth:
   title: 地球脉动
   director: BBC
-  poster: /posters/placeholder-d.svg
+  poster: https://image.tmdb.org/t/p/w500/bNcNxUtZ520d5de5s78onoiSiwQ.jpg
   type: doc
   note: 每一帧都能当壁纸，看完想立刻订张机票去南极。

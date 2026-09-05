@@ -10,6 +10,7 @@ interface Props {
     tags: string[];
     date: Date;
     author?: string;
+    written?: string;
   };
   body: string;
   /** 是否显示所属栏目（标签聚合页需要） */
@@ -19,6 +20,7 @@ interface Props {
 const { id, data, body, showCategory = false } = Astro.props;
 const href = `/${data.category}/${id}`;
 const dateStr = data.date.toISOString().slice(0, 10);
+const when = data.written ?? `收录于 ${dateStr}`;
 ---
 
 <article class="card">
@@ -27,7 +29,7 @@ const dateStr = data.date.toISOString().slice(0, 10);
   <div class="card__foot">
     <span class="meta">
       {showCategory && <>{CATEGORY_MAP[data.category].name} · </>}
-      {data.author && <>{data.author} · </>}收录于 {dateStr}
+      {data.author && <>{data.author} · </>}{when}
     </span>
     {
       data.tags.length > 0 && (
@@ -53,11 +55,12 @@ const dateStr = data.date.toISOString().slice(0, 10);
     font-size: var(--fs-h3);
   }
   .card__title a {
-    color: var(--c-ink);
+    color: var(--c-accent);
     text-decoration: none;
   }
   .card__title a:hover {
-    color: var(--c-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
   .card__excerpt {
     margin: 0 0 var(--s-3);

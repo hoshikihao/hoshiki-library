@@ -51,8 +51,9 @@
 - `title` 必填
 - `category` 必填,取值 `gumu` | `xinzhi` | `shixing`
 - `tags` 必填,字符串数组
-- `date` 必填,收录日期(非原文发表日期)
-- `sourceUrl`:`category: shixing` 时必填,其余可空
+- `date` 必填,收录日期(非原文发表日期),用于列表排序与 RSS
+- `written` 可选,原文写作时间,自由文本(如「北宋嘉佑二年（1057）」);填了就替代 byline 里的「收录于 …」
+- `sourceUrl`:可选,有原文链接就填(渲染成文末「读原文」按钮)
 - `author` 可选
 - `commentary` 可选,Markdown,渲染到文末点评块
 - `draft` 可选,默认 `false`
@@ -123,5 +124,5 @@
 
 ## 待办(上线前处理)
 
-- 占位内容替换:`sample-shixing.md` 假 sourceUrl、书籍与影视封面(现为占位 SVG)
+- 书籍封面 / 影视海报走远程图源(NeoDB / TMDB 热链),未落本地
 - 微信群入口现在是个人微信号(`hoshikihao`),等有不过期的入群方式(如永久群二维码、公众号自动回复)再换成扫码

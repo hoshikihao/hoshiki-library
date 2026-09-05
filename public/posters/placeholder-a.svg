@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" role="img" aria-label="海报占位图">
-  <rect width="200" height="300" fill="#3c4e63"/>
-  <rect x="14" y="14" width="172" height="272" fill="none" stroke="#faf9f5" stroke-opacity="0.5"/>
-  <text x="100" y="150" fill="#faf9f5" font-family="serif" font-size="18" text-anchor="middle">海报占位</text>
-</svg>
