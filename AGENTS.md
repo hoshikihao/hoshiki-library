@@ -24,6 +24,12 @@
   - 光影:`bodyClass="bilibili-films"`,bilibili 风(白底、粉色 `#fb7299`、圆润海报卡、悬停放大)
 - 新增/调整某一栏目的视觉,只改该页面自己的 token 覆盖块,不要动 `tokens.css`
 
+## 布局:粘性页脚(footer 贴底)
+
+- 机制(定义在 `global.css`,不要改):`body`(`display:flex;flex-direction:column;min-height:100vh`)→ `main`(`flex:1 0 auto;display:flex;flex-direction:column`)。内容矮于视口时 `main` 撑满剩余空间、页脚贴视口底部;内容超出视口时正常滚动。
+- 某页面根节点想撑满 `main` 的可用高度(比如首页色斑背景要通到页脚),在该节点上写 `flex: 1`,**不要**用 `min-height: calc(100vh - 若干px)` 这类估算值——header/footer 实际高度一变,估算值就和视口对不上,会在页脚前留出一段空白(踩过这个坑)。
+- `Footer.astro` 本身不要加 `margin-top` 之类外边距,间距靠自己的 `padding` + `border-top`,否则会在"贴底"之外再叠加一段强制滚动距离(也踩过)。
+
 ## 图标
 
 - 统一用 `astro-icon`(`import { Icon } from 'astro-icon/components'`),不手画 SVG path
@@ -38,6 +44,7 @@
 - 影视:`src/data/films.yaml`,结构同 books;海报 `public/posters/` 或远程 URL
 - 首页日签图池:`src/assets/daily/<id>.(jpg|png|webp)`,id 对应 `src/data/daily-quotes.ts`
 - 设计 token:`src/styles/tokens.css`,全局样式:`src/styles/global.css`
+- 页眉头像:`src/assets/avatar.png`(星树浩本人头像,`Header.astro` 引用);原来的树形 SVG logo 组件已删除,不要再找 `StarTree.astro`
 
 ## 文章 frontmatter
 
@@ -72,6 +79,11 @@
 - `src/data/daily-quotes.ts`:`{ id, quote }` 数组,是一个池子
 - `id` 对应 `src/assets/daily/` 下的图片文件名(去扩展名)
 - 按「今年第几天 % 池子长度」在浏览器里选今天该显示哪条,逐日自动轮换、无需重新构建;往池子里加新条目即可参与轮换
+- 日签图目前用的是 Anato Finnstark 的画(`xunmeng.jpg`),未取得授权,用户知情并接受风险
+
+## 首页顶部留白(窄屏)
+
+`.ghome__center` 的 `margin-top` 在桌面是 `min(18vh, 160px)`,窄屏(`max-width:480px`)单独覆盖成 `var(--s-8)`——手机浏览器地址栏占掉的空间比例更大,18vh 会把标题挤得离色斑区顶部很远。**这个覆盖只改 `margin-top` 这一项**,标题字号、栏目胶囊、日签卡片尺寸都刻意保持桌面同款大小,用户明确要求过手机上不要因为屏幕矮就把这些也缩小(哪怕因此首次打开看不到页脚)。改这块之前请先确认这个前提没变。
 
 ## 命名
 
@@ -101,6 +113,7 @@
 - `npm run preview` 检查受影响页面、搜索、`/rss.xml`、`/sitemap-index.xml`
 - 不跑验证时说明未跑什么、为什么、剩余风险
 - 搜索索引依赖页面上的 `data-pagefind-body`(文章正文、书林/光影的书架容器已加)
+- 较大的视觉/结构改动(比如首页/书林/光影三套主题那次)在 git worktree 里做完、本地验证过再合并到 `main`;小的单文件调整直接在 `main` 上改
 
 ## 字体
 
