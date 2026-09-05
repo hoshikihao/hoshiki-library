@@ -124,5 +124,4 @@
 ## 待办(上线前处理)
 
 - 占位内容替换:`sample-shixing.md` 假 sourceUrl、书籍与影视封面(现为占位 SVG)
-- `src/assets/xiaoshu-avatar.jpg` 目前无引用,确认是否删除
 - 微信群入口现在是个人微信号(`hoshikihao`),等有不过期的入群方式(如永久群二维码、公众号自动回复)再换成扫码
