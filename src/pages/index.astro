@@ -300,37 +300,4 @@ function dailyImage(id: string) {
     text-align: left;
   }
 
-  /* 矮屏幕（多数手机浏览器的实际可视高度）收紧竖向节奏，
-     让日签图片一打开就能完整看到，不用先往上滚一下 */
-  @media (max-width: 480px), (max-height: 750px) {
-    .ghome__center {
-      margin-top: var(--s-4);
-      padding-top: var(--s-4);
-      padding-bottom: var(--s-4);
-    }
-    .ghome__wordmark {
-      margin-bottom: var(--s-3);
-      font-size: 1.85rem;
-    }
-    .gsearch {
-      padding: 0.6rem 1rem;
-    }
-    .gentries {
-      margin-top: var(--s-3);
-    }
-    .gentry {
-      padding: 0.45rem 1rem;
-      font-size: 0.8rem;
-    }
-    .daily {
-      margin-top: var(--s-4);
-    }
-    .daily__card {
-      width: 150px;
-    }
-    .daily__card figcaption {
-      padding: var(--s-4) var(--s-3) var(--s-3);
-      font-size: 0.75rem;
-    }
-  }
 </style>
