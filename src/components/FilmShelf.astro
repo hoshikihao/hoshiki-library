@@ -1,42 +1,42 @@
 ---
-import { BOOK_STATUS, type BookStatus } from '../consts';
+import { FILM_TYPE, type FilmType } from '../consts';
 
-interface Book {
+interface Film {
   title: string;
-  author: string;
-  cover: string;
-  status: BookStatus;
+  director: string;
+  poster: string;
+  type: FilmType;
   note: string;
 }
 interface Props {
-  books: { id: string; data: Book }[];
+  films: { id: string; data: Film }[];
 }
-const { books } = Astro.props;
+const { films } = Astro.props;
 
-const groups = BOOK_STATUS.map((s) => ({
-  ...s,
-  items: books.filter((b) => b.data.status === s.id),
+const groups = FILM_TYPE.map((t) => ({
+  ...t,
+  items: films.filter((f) => f.data.type === t.id),
 })).filter((g) => g.items.length > 0);
 ---
 
 <div class="shelf stack" data-shelf>
   {
     groups.map((g) => (
-      <section data-status={g.id}>
+      <section data-type={g.id}>
         <h2 class="shelf__heading">
           {g.name}
           <span class="meta">（{g.items.length}）</span>
         </h2>
         <ul class="shelf__grid">
-          {g.items.map((b) => (
+          {g.items.map((f) => (
             <li class="book">
               <div class="book__cover">
-                <img src={b.data.cover} alt={`《${b.data.title}》封面`} loading="lazy" />
+                <img src={f.data.poster} alt={`《${f.data.title}》海报`} loading="lazy" />
               </div>
               <div class="book__body">
-                <p class="book__title">{b.data.title}</p>
-                <p class="meta">{b.data.author}</p>
-                <p class="book__note">{b.data.note}</p>
+                <p class="book__title">{f.data.title}</p>
+                <p class="meta">{f.data.director}</p>
+                <p class="book__note">{f.data.note}</p>
               </div>
             </li>
           ))}
@@ -57,23 +57,15 @@ const groups = BOOK_STATUS.map((s) => ({
     margin: var(--s-6) 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: var(--s-4);
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--s-8) var(--s-5);
   }
   .book {
-    padding: var(--s-4);
-    border: 1px solid var(--c-line);
-    border-radius: var(--radius);
-    background: var(--c-surface);
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease,
-      border-color 0.15s ease;
+    position: relative;
+    transition: transform 0.25s ease;
   }
   .book:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-float);
-    border-color: transparent;
+    z-index: 2;
   }
   .book__cover {
     display: block;
@@ -81,18 +73,23 @@ const groups = BOOK_STATUS.map((s) => ({
     background: var(--c-sand);
     border-radius: var(--radius-sm);
     overflow: hidden;
+    box-shadow: var(--shadow-float);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .book:hover .book__cover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 24px rgba(251, 114, 153, 0.28);
   }
   .book__cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .book__body {
-    margin-top: var(--s-3);
-  }
   .book__title {
-    margin: 0;
-    font-weight: 600;
+    margin: var(--s-3) 0 0;
+    font-weight: 700;
     line-height: var(--lh-snug);
   }
   .book .meta {
@@ -105,7 +102,7 @@ const groups = BOOK_STATUS.map((s) => ({
     line-height: var(--lh-snug);
   }
 
-  /* 列表视图：卡片退回细行 */
+  /* 列表视图 */
   [data-shelf].is-list .shelf__grid {
     display: block;
   }
@@ -115,17 +112,17 @@ const groups = BOOK_STATUS.map((s) => ({
     column-gap: var(--s-4);
     align-items: start;
     padding: var(--s-3) 0;
-    border: 0;
     border-bottom: 1px solid var(--c-line);
-    border-radius: 0;
-    background: none;
   }
-  [data-shelf].is-list .book:hover {
-    transform: none;
+  [data-shelf].is-list .book__cover,
+  [data-shelf].is-list .book:hover .book__cover {
     box-shadow: none;
-    border-bottom-color: var(--c-accent);
+    transform: none;
   }
-  [data-shelf].is-list .book__body {
-    margin-top: 0;
+  [data-shelf].is-list .book__title {
+    margin: 0;
+  }
+  [data-shelf].is-list .book__note {
+    margin: var(--s-1) 0 0;
   }
 </style>

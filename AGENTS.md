@@ -2,9 +2,10 @@
 
 ## 项目
 
-- 站点:星树文库,读书与好文库,公开站,域名 `read.hoshikihao.com`
+- 站点:星树文库,读书、观影与好文库,公开站,域名 `read.hoshikihao.com`
 - 技术:Astro 静态站(`output: 'static'`),Cloudflare Workers(静态资源托管)部署
 - 仓库:`github.com/hoshikihao/hoshiki-library`(public)
+- 五个栏目:古木(古文)/ 新枝(随笔)/ 拾星(时文选粹)/ 书林(书籍)/ 光影(影视)
 - Slogan:星树文库 · 甄选天下好文好书
 
 ## 技术约束
@@ -12,14 +13,30 @@
 - 不引入前端框架(React / Vue / Svelte 等)
 - 不引入 SSR / adapter,保持纯静态
 - 新增依赖前按用户全局规则先说明用途、风险、替代方案并等确认
-- 客户端 JS 克制:只写原生小脚本,无 JS 时页面主要内容仍可读(渐进增强);目前用于 Pagefind 搜索、书籍页筛选
+- 客户端 JS 克制:只写原生小脚本,无 JS 时页面主要内容仍可读(渐进增强);用于 Pagefind 搜索、书林/光影页筛选、首页日签轮换
+
+## 视觉:全站 Kami + 各栏目独立主题
+
+- 古木 / 新枝 / 拾星 / 关于 / 搜索:统一走 Kami Parchment(暖米白、霞鹜文楷、靛蓝强调),定义在 `src/styles/tokens.css`,不要改这份全局默认值
+- 首页、书林、光影三页各有独立视觉,做法是给 `BaseLayout` 传 `bodyClass`,再在页面内用 `<style is:global>` 针对 `body.<class>` 覆盖设计 token(`--c-canvas` `--c-accent` `--font-serif-*` 等),只在该页生效,不污染别处
+  - 首页:`bodyClass="google-home"`,Google 首页风(白底、多色马卡龙入口、呼吸感、色斑背景)
+  - 书林:`bodyClass="readwise-books"`,Readwise 风(白底、珊瑚橙 `#ff5a36`、无衬线、卡片式书目)
+  - 光影:`bodyClass="bilibili-films"`,bilibili 风(白底、粉色 `#fb7299`、圆润海报卡、悬停放大)
+- 新增/调整某一栏目的视觉,只改该页面自己的 token 覆盖块,不要动 `tokens.css`
+
+## 图标
+
+- 统一用 `astro-icon`(`import { Icon } from 'astro-icon/components'`),不手画 SVG path
+- 品牌 logo 先查 `simple-icons:*`(如 `simple-icons:github`、`simple-icons:netflix`);通用 UI 图标用 `lucide:*`
+- 两个库都没有的品牌(如 Anna's Archive、Z-Library)用语义相近的 lucide 图标代替,不要手绘凑一个近似 logo
+- 构建时内联成 SVG,零客户端 JS、零运行时体积
 
 ## 目录
 
 - 文章:`src/content/articles/<slug>.md`,一篇一个文件
-- 书籍:`src/data/books.yaml`,全部集中一个文件
-- 书籍封面:`public/covers/`,或用远程 URL
-- 首页门户图等大图资源:`src/assets/`
+- 书籍:`src/data/books.yaml`,全部集中一个文件;封面 `public/covers/` 或远程 URL
+- 影视:`src/data/films.yaml`,结构同 books;海报 `public/posters/` 或远程 URL
+- 首页日签图池:`src/assets/daily/<id>.(jpg|png|webp)`,id 对应 `src/data/daily-quotes.ts`
 - 设计 token:`src/styles/tokens.css`,全局样式:`src/styles/global.css`
 
 ## 文章 frontmatter
@@ -41,19 +58,33 @@
 - `title` `author` `cover` `status` `note` 全部必填
 - `status` 取值 `reading` | `read` | `want`
 - `note` 一句话短评
-- `cover` 用 `/covers/xxx`(放 `public/covers/`)或远程图片 URL
-- 不提供每本书的下载链接;书籍页只放 Telegram bot 入口 + 获取电子书的简短说明
+- 不提供每本书的下载链接;书林页顶部是 Anna's Archive / Z-Library / Telegram bot 小树 三个统一入口,不针对单本书
+
+## 影视字段
+
+`src/data/films.yaml` 结构同 books.yaml,顶层 `id: {片}` 映射。
+
+- `title` `director` `poster` `type` `note` 全部必填
+- `type` 取值 `anime` | `series` | `movie` | `doc`,按类型分组(不追踪观看进度)
+
+## 首页日签
+
+- `src/data/daily-quotes.ts`:`{ id, quote }` 数组,是一个池子
+- `id` 对应 `src/assets/daily/` 下的图片文件名(去扩展名)
+- 按「今年第几天 % 池子长度」在浏览器里选今天该显示哪条,逐日自动轮换、无需重新构建;往池子里加新条目即可参与轮换
 
 ## 命名
 
 - 文章文件名:英文或拼音,短横线分隔
 - 变量、函数:英文;注释:中文
-- 页面路径、栏目 slug 用 `gumu` / `xinzhi` / `shixing`
+- 页面路径、栏目 slug 用 `gumu` / `xinzhi` / `shixing` / `books` / `films`
+- 首页入口的显示名与顺序:改 `consts.ts` 的 `ENTRY_LINKS`
 
 ## 内容维护流程
 
 - 加文章:建 `src/content/articles/<slug>.md` → 填 frontmatter → 粘正文 → 可选写 `commentary`
 - 加书:`src/data/books.yaml` 追加一条
+- 加片:`src/data/films.yaml` 追加一条
 - push 到 `main` 即触发 Cloudflare Workers Builds 构建部署
 
 ## 部署
@@ -69,13 +100,16 @@
 - 改动后跑 `npm run build`,必须通过且生成 `dist/pagefind/`
 - `npm run preview` 检查受影响页面、搜索、`/rss.xml`、`/sitemap-index.xml`
 - 不跑验证时说明未跑什么、为什么、剩余风险
-- 搜索索引依赖页面上的 `data-pagefind-body`(文章正文、书架容器已加)
+- 搜索索引依赖页面上的 `data-pagefind-body`(文章正文、书林/光影的书架容器已加)
 
 ## 字体
 
-- 中文正文用霞鹜文楷(LXGW WenKai,OFL,免费可商用),经 ZeoSeven CDN 加载,见 `BaseLayout.astro`
-- 字体栈变量在 `src/styles/tokens.css`;换字体只改 `--font-serif-cjk` + 视情况加 `@font-face`
+- 全站默认(Kami 页面):霞鹜文楷(LXGW WenKai,OFL,免费可商用),经 ZeoSeven CDN 加载,见 `BaseLayout.astro`
+- 书林页覆盖为系统无衬线(见"视觉"一节的 token 覆盖机制),首页/光影页保留默认字体
+- 字体栈变量在 `src/styles/tokens.css`;换字体改 `--font-serif-cjk` / `--font-serif-latin`
 
 ## 待办(上线前处理)
 
-- 占位内容替换:`sample-shixing.md` 假 sourceUrl、`consts.ts` 的 `BOOK_BOT.url`(真实 bot)、`about.md` 联系方式、书籍封面(现为占位 SVG)
+- 占位内容替换:`sample-shixing.md` 假 sourceUrl、书籍与影视封面(现为占位 SVG)
+- `src/assets/xiaoshu-avatar.jpg` 目前无引用,确认是否删除
+- 微信群入口现在是个人微信号(`hoshikihao`),等有不过期的入群方式(如永久群二维码、公众号自动回复)再换成扫码

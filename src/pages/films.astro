@@ -2,31 +2,34 @@
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BookShelf from '../components/BookShelf.astro';
-import { BOOK_BOT } from '../consts';
+import FilmShelf from '../components/FilmShelf.astro';
 
-const books = await getCollection('books');
+const films = await getCollection('films');
 
-const counts = { reading: 0, read: 0, want: 0 };
-for (const b of books) counts[b.data.status]++;
+const counts = { anime: 0, series: 0, movie: 0, doc: 0 };
+for (const f of films) counts[f.data.type]++;
 ---
 
-<BaseLayout title="书林" description="星树浩的书架：在读、读完、想读，每本一句话。" bodyClass="readwise-books">
+<BaseLayout title="光影" description="星树浩的观影记录：动漫、剧集、电影、纪录片，每部一句话。" bodyClass="bilibili-films">
   <div class="page page--wide stack">
     <header>
-      <h1>书林</h1>
+      <h1>光影</h1>
       <div class="platforms">
-        <a class="src" href="https://annas-archive.cc" target="_blank" rel="noopener">
-          <Icon name="lucide:archive" width={15} height={15} />
-          Anna's Archive
+        <a class="src" href="https://www.netflix.com" target="_blank" rel="noopener">
+          <Icon name="simple-icons:netflix" width={15} height={15} />
+          Netflix
         </a>
-        <a class="src" href="https://z-library.bz" target="_blank" rel="noopener">
-          <Icon name="lucide:library" width={15} height={15} />
-          Z-Library
+        <a class="src" href="https://tv.apple.com" target="_blank" rel="noopener">
+          <Icon name="simple-icons:appletv" width={15} height={15} />
+          Apple TV
         </a>
-        <a class="src" href={BOOK_BOT.url} target="_blank" rel="noopener">
-          <Icon name="simple-icons:telegram" width={15} height={15} />
-          {BOOK_BOT.name}
+        <a class="src" href="https://www.youtube.com" target="_blank" rel="noopener">
+          <Icon name="simple-icons:youtube" width={16} height={16} />
+          YouTube
+        </a>
+        <a class="src" href="https://www.bilibili.com" target="_blank" rel="noopener">
+          <Icon name="simple-icons:bilibili" width={16} height={16} />
+          B 站
         </a>
       </div>
     </header>
@@ -47,17 +50,18 @@ for (const b of books) counts[b.data.status]++;
           <button type="button" role="menuitemradio" data-view="grid" aria-checked="true">网格</button>
           <button type="button" role="menuitemradio" data-view="list" aria-checked="false">列表</button>
           <hr />
-          <p class="shelf-menu__group">阅读状态</p>
-          <button type="button" role="menuitemradio" data-status="all" aria-checked="true">全部</button>
-          {counts.reading > 0 && <button type="button" role="menuitemradio" data-status="reading" aria-checked="false">在读</button>}
-          {counts.read > 0 && <button type="button" role="menuitemradio" data-status="read" aria-checked="false">读完</button>}
-          {counts.want > 0 && <button type="button" role="menuitemradio" data-status="want" aria-checked="false">想读</button>}
+          <p class="shelf-menu__group">类型</p>
+          <button type="button" role="menuitemradio" data-type="all" aria-checked="true">全部</button>
+          {counts.anime > 0 && <button type="button" role="menuitemradio" data-type="anime" aria-checked="false">动漫</button>}
+          {counts.series > 0 && <button type="button" role="menuitemradio" data-type="series" aria-checked="false">剧集</button>}
+          {counts.movie > 0 && <button type="button" role="menuitemradio" data-type="movie" aria-checked="false">电影</button>}
+          {counts.doc > 0 && <button type="button" role="menuitemradio" data-type="doc" aria-checked="false">纪录片</button>}
         </div>
       </div>
     </div>
 
     <div data-pagefind-body>
-      <BookShelf books={books} />
+      <FilmShelf films={films} />
     </div>
   </div>
 </BaseLayout>
@@ -72,36 +76,37 @@ for (const b of books) counts[b.data.status]++;
     const menu = bar.querySelector<HTMLElement>('.shelf-menu')!;
     const label = bar.querySelector<HTMLElement>('.shelf-menu-label')!;
     const items = [...menu.querySelectorAll<HTMLElement>('button[role="menuitemradio"]')];
-    const sections = [...shelf.querySelectorAll<HTMLElement>('section[data-status]')];
+    const sections = [...shelf.querySelectorAll<HTMLElement>('section[data-type]')];
 
     const VIEW_NAME: Record<string, string> = { grid: '网格', list: '列表' };
-    const STATUS_NAME: Record<string, string> = {
+    const TYPE_NAME: Record<string, string> = {
       all: '全部',
-      reading: '在读',
-      read: '读完',
-      want: '想读',
+      anime: '动漫',
+      series: '剧集',
+      movie: '电影',
+      doc: '纪录片',
     };
 
-    const KEY = 'hoshiki:books-view';
-    const state = { status: 'all', view: 'grid' };
+    const KEY = 'hoshiki:films-view';
+    const state = { type: 'all', view: 'grid' };
     try {
       Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}'));
     } catch {}
-    // 所选状态若已无书（书单变动），回退「全部」
-    if (state.status !== 'all' && !items.some((b) => b.dataset.status === state.status)) {
-      state.status = 'all';
+    // 所选类型若已无片（片单变动），回退「全部」
+    if (state.type !== 'all' && !items.some((b) => b.dataset.type === state.type)) {
+      state.type = 'all';
     }
 
     function apply() {
       shelf.classList.toggle('is-list', state.view === 'list');
       for (const sec of sections) {
-        sec.hidden = state.status !== 'all' && sec.dataset.status !== state.status;
+        sec.hidden = state.type !== 'all' && sec.dataset.type !== state.type;
       }
       for (const b of items) {
-        const on = b.dataset.view === state.view || b.dataset.status === state.status;
+        const on = b.dataset.view === state.view || b.dataset.type === state.type;
         b.setAttribute('aria-checked', String(on));
       }
-      label.textContent = `${VIEW_NAME[state.view]} · ${STATUS_NAME[state.status]}`;
+      label.textContent = `${VIEW_NAME[state.view]} · ${TYPE_NAME[state.type]}`;
     }
 
     function openMenu() {
@@ -120,7 +125,7 @@ for (const b of books) counts[b.data.status]++;
       const btn = (e.target as HTMLElement).closest<HTMLElement>('button');
       if (!btn) return;
       if (btn.dataset.view) state.view = btn.dataset.view;
-      if (btn.dataset.status) state.status = btn.dataset.status;
+      if (btn.dataset.type) state.type = btn.dataset.type;
       try {
         localStorage.setItem(KEY, JSON.stringify(state));
       } catch {}
@@ -141,20 +146,22 @@ for (const b of books) counts[b.data.status]++;
 </script>
 
 <style is:global>
-  /* Readwise 风：暖白底、珊瑚橙强调色、无衬线、更圆的角 —— 只在书林页生效 */
-  body.readwise-books {
+  /* bilibili 风：白底、粉色强调、圆润卡片 —— 只在光影页生效 */
+  body.bilibili-films {
     --c-canvas: #ffffff;
-    --c-surface: #fbfbfa;
-    --c-line: #ececea;
-    --c-accent: #ff5a36;
-    --c-accent-weak: #ffe9e2;
-    --shadow-float: 0 4px 20px rgba(20, 20, 20, 0.08);
-    --radius: 16px;
-    --radius-sm: 10px;
+    --c-surface: #ffffff;
+    --c-sand: #f1f2f3;
+    --c-line: #e3e5e7;
+    --c-ink: #18191c;
+    --c-ink-soft: #61666d;
+    --c-ink-faint: #9499a0;
+    --c-accent: #fb7299;
+    --c-accent-weak: #fff0f5;
+    --shadow-float: 0 4px 16px rgba(251, 114, 153, 0.18);
     --font-serif-latin: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
     --font-serif-cjk: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
   }
-  body.readwise-books .site-header {
+  body.bilibili-films .site-header {
     background: var(--c-canvas);
   }
 </style>
@@ -170,15 +177,20 @@ for (const b of books) counts[b.data.status]++;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 4px 12px;
+    padding: 4px 12px 4px 10px;
     border-radius: 999px;
-    background: var(--c-accent);
-    color: #fff;
+    background: var(--c-accent-weak);
+    border: 1px solid transparent;
+    color: var(--c-accent);
     text-decoration: none;
     font-size: 0.95em;
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
   }
   .src:hover {
-    background: var(--c-ink);
+    background: var(--c-accent);
+    color: #fff;
   }
 
   .shelf-bar {

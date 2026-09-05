@@ -1,10 +1,23 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { Icon } from 'astro-icon/components';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SearchBox from '../components/SearchBox.astro';
-import { CATEGORIES, SITE } from '../consts';
+import { ENTRY_LINKS, SITE } from '../consts';
+import { DAILY_QUOTES } from '../data/daily-quotes';
+
+// 日签图池：文件名（去扩展名）对应 daily-quotes.ts 里的 id
+const dailyAssets = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/daily/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+);
+function dailyImage(id: string) {
+  const hit = Object.entries(dailyAssets).find(([path]) => path.includes(`/${id}.`));
+  return hit?.[1].default;
+}
 ---
 
-<BaseLayout>
+<BaseLayout bodyClass="google-home">
   {/* 首页以搜索为核心：空闲时预取 Pagefind 运行时，让 /search 少等 */}
   <Fragment slot="head">
     <link rel="prefetch" href="/pagefind/pagefind-ui.js" />
@@ -12,96 +25,278 @@ import { CATEGORIES, SITE } from '../consts';
     <link rel="prefetch" href="/pagefind/wasm.unknown.pagefind" />
   </Fragment>
 
-  <div class="home">
-    <div class="masthead">
-      <h1>{SITE.title}</h1>
-      <p class="masthead__slogan">{SITE.slogan}</p>
+  <div class="ghome">
+    <div class="ghome__blobs" aria-hidden="true">
+      <span class="blob blob--blue"></span>
+      <span class="blob blob--coral"></span>
+      <span class="blob blob--amber"></span>
+      <span class="blob blob--green"></span>
     </div>
+    <div class="ghome__center">
+      <h1 class="ghome__wordmark">{SITE.title}</h1>
 
-    <div class="home__search">
-      <SearchBox autofocus />
+      <form class="gsearch" action="/search" method="get" role="search">
+        <Icon class="gsearch__icon" name="lucide:search" width={18} height={18} />
+        <label class="visually-hidden" for="q">搜索文章、书名、作者、标签</label>
+        <input
+          type="search"
+          id="q"
+          name="q"
+          placeholder="搜索文章、书名、作者、标签…"
+          autocomplete="off"
+          autofocus
+        />
+        <button type="submit" class="visually-hidden">搜索</button>
+      </form>
+
+      <nav class="gentries" aria-label="栏目入口">
+        {
+          ENTRY_LINKS.map((e) => (
+            <a class="gentry" href={e.href} style={`background:${e.bg};color:${e.fg}`}>
+              {e.name}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="daily" data-daily>
+        {
+          DAILY_QUOTES.map((q, i) => {
+            const img = dailyImage(q.id);
+            return (
+              img && (
+                <figure class="daily__card" data-daily-idx={i} hidden={i !== 0}>
+                  <Image src={img} alt="" widths={[240, 480]} sizes="240px" loading="eager" />
+                  <figcaption>{q.quote}</figcaption>
+                </figure>
+              )
+            );
+          })
+        }
+      </div>
     </div>
-
-    <nav class="entries" aria-label="栏目入口">
-      {
-        CATEGORIES.map((c) => (
-          <a class="entry" href={`/${c.id}`}>
-            <span class="entry__name">{c.name}</span>
-            <span class="entry__blurb">{c.blurb}</span>
-          </a>
-        ))
-      }
-      <a class="entry" href="/books">
-        <span class="entry__name">书籍</span>
-        <span class="entry__blurb">在读 · 读完 · 想读</span>
-      </a>
-    </nav>
   </div>
 </BaseLayout>
 
-<style>
-  .home {
-    max-width: var(--w-page);
-    margin-inline: auto;
-    min-height: min(72vh, 640px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--s-16) var(--s-6);
-  }
-
-  .masthead {
-    text-align: center;
-  }
-  .masthead h1 {
-    font-size: var(--fs-display);
-    margin-bottom: var(--s-2);
-    letter-spacing: 0.06em;
-  }
-  .masthead__slogan {
-    margin: 0;
-    color: var(--c-ink-soft);
-    letter-spacing: 0.12em;
-  }
-
-  .home__search {
-    margin: var(--s-8) auto 0;
-    max-width: 34rem;
-  }
-
-  .entries {
-    margin-top: var(--s-8);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--s-3);
-  }
-  .entry {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: var(--s-4) var(--s-2);
-    background: var(--c-surface);
-    border: 1px solid var(--c-line);
-    border-radius: var(--radius-sm);
-    text-decoration: none;
-    text-align: center;
-  }
-  .entry:hover {
-    border-color: var(--c-accent);
-  }
-  .entry__name {
-    font-size: var(--fs-h3);
-    color: var(--c-ink);
-  }
-  .entry__blurb {
-    font-size: var(--fs-label);
-    color: var(--c-ink-faint);
-  }
-
-  @media (max-width: 34rem) {
-    .entries {
-      grid-template-columns: repeat(2, 1fr);
+<script>
+  // 按「今年第几天 % 池子长度」选今天该显示哪张日签，逐日自动轮换，无需重新构建。
+  const wrap = document.querySelector<HTMLElement>('[data-daily]');
+  if (wrap) {
+    const cards = [...wrap.querySelectorAll<HTMLElement>('[data-daily-idx]')];
+    if (cards.length > 1) {
+      const now = new Date();
+      const startOfYear = new Date(now.getFullYear(), 0, 0);
+      const dayOfYear = Math.floor((now.getTime() - startOfYear.getTime()) / 86400000);
+      const todayIdx = dayOfYear % cards.length;
+      for (const c of cards) {
+        c.hidden = Number(c.dataset.dailyIdx) !== todayIdx;
+      }
     }
+  }
+</script>
+
+<style is:global>
+  body.google-home {
+    background: #fff;
+  }
+  body.google-home .site-header {
+    background: #fff;
+    border-bottom-color: transparent;
+  }
+  body.google-home .site-footer {
+    border-top-color: transparent;
+    color: #70757a;
+  }
+  body.google-home .site-footer a {
+    color: #70757a;
+  }
+</style>
+
+<style>
+  .ghome {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 220px);
+    overflow: hidden;
+  }
+  .ghome__blobs {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .blob {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.4;
+  }
+  .blob--blue {
+    width: 380px;
+    height: 380px;
+    top: -120px;
+    left: -80px;
+    background: #4285f4;
+  }
+  .blob--coral {
+    width: 320px;
+    height: 320px;
+    top: 40px;
+    right: -100px;
+    background: #ea4335;
+    opacity: 0.3;
+  }
+  .blob--amber {
+    width: 300px;
+    height: 300px;
+    bottom: 20px;
+    left: 8%;
+    background: #fbbc05;
+    opacity: 0.35;
+  }
+  .blob--green {
+    width: 340px;
+    height: 340px;
+    bottom: -140px;
+    right: 10%;
+    background: #34a853;
+    opacity: 0.3;
+  }
+
+  .ghome__center {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 34rem;
+    padding: var(--s-6);
+    margin-top: min(18vh, 160px);
+    text-align: center;
+  }
+  .ghome__wordmark {
+    margin: 0 0 var(--s-8);
+    font-size: 2.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #1a1a1a;
+    animation: ghome-rise 0.5s ease both;
+  }
+
+  .gsearch {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #dfe1e5;
+    border-radius: 999px;
+    background: #fff;
+    animation: ghome-rise 0.5s ease 0.08s both;
+    transition:
+      box-shadow 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+  .gsearch:hover {
+    box-shadow: 0 4px 16px rgba(32, 33, 36, 0.14);
+    border-color: transparent;
+  }
+  .gsearch:focus-within {
+    box-shadow: 0 4px 20px rgba(66, 133, 244, 0.25);
+    border-color: transparent;
+    transform: translateY(-1px);
+  }
+  .gsearch__icon {
+    flex-shrink: 0;
+    color: #5f6368;
+  }
+  .gsearch input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: #1a1a1a;
+  }
+  .gsearch input::placeholder {
+    color: #8a8a8a;
+  }
+
+  .gentries {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    margin-top: var(--s-6);
+    animation: ghome-rise 0.5s ease 0.16s both;
+  }
+  .gentry {
+    padding: 0.6rem 1.3rem;
+    border: 0;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .gentry:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 14px rgba(32, 33, 36, 0.14);
+  }
+
+  .daily {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--s-12);
+    animation: ghome-rise 0.5s ease 0.24s both;
+  }
+
+  @keyframes ghome-rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ghome__wordmark,
+    .gsearch,
+    .gentries,
+    .daily {
+      animation: none;
+    }
+  }
+  .daily__card {
+    position: relative;
+    width: 220px;
+    aspect-ratio: 2 / 3;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-float);
+  }
+  .daily__card :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .daily__card figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: var(--s-6) var(--s-4) var(--s-4);
+    background: linear-gradient(to top, rgba(10, 12, 8, 0.82), rgba(10, 12, 8, 0) 80%);
+    color: #f5f4ed;
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    line-height: var(--lh-snug);
+    text-align: left;
   }
 </style>

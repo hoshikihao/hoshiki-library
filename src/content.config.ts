@@ -33,4 +33,16 @@ const books = defineCollection({
   }),
 });
 
-export const collections = { articles, books };
+// 影视：src/data/films.yaml，按类型分组（不追踪观看状态）
+const films = defineCollection({
+  loader: file('./src/data/films.yaml'),
+  schema: z.object({
+    title: z.string(),
+    director: z.string(),
+    poster: z.string(), // /posters/xxx.jpg 或远程 URL
+    type: z.enum(['anime', 'series', 'movie', 'doc']),
+    note: z.string(), // 一句话短评
+  }),
+});
+
+export const collections = { articles, books, films };

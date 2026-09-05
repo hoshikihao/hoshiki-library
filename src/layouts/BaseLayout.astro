@@ -7,9 +7,11 @@ import { SITE } from '../consts';
 interface Props {
   title?: string;
   description?: string;
+  /** 页面级 body class，用于个别页面覆盖全局配色（如首页的实验样式） */
+  bodyClass?: string;
 }
 
-const { title, description = SITE.description } = Astro.props;
+const { title, description = SITE.description, bodyClass } = Astro.props;
 const fullTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} · ${SITE.slogan}`;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 ---
@@ -38,7 +40,7 @@ const canonical = new URL(Astro.url.pathname, SITE.url).href;
     />
     <slot name="head" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <Header />
     <main>
       <slot />

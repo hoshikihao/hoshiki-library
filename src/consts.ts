@@ -44,3 +44,21 @@ export const BOOK_BOT = {
   url: 'https://t.me/HoshikiBot',
   hint: '我的随身小书童',
 } as const;
+
+export type FilmType = 'anime' | 'series' | 'movie' | 'doc';
+
+export const FILM_TYPE: { id: FilmType; name: string }[] = [
+  { id: 'anime', name: '动漫' },
+  { id: 'series', name: '剧集' },
+  { id: 'movie', name: '电影' },
+  { id: 'doc', name: '纪录片' },
+];
+
+// 首页入口：路径 + 展示名 + 一对配色（浅底/深字），首页专用
+export const ENTRY_LINKS = [
+  { href: '/gumu', name: '古木', bg: '#e8f3e7', fg: '#2f6b2c' },
+  { href: '/xinzhi', name: '新枝', bg: '#e5f0fc', fg: '#1a56c4' },
+  { href: '/shixing', name: '拾星', bg: '#fdf3dc', fg: '#a8730a' },
+  { href: '/books', name: '书林', bg: '#fce8e5', fg: '#c1432a' },
+  { href: '/films', name: '光影', bg: '#f1e7fa', fg: '#7a3fb8' },
+] as const;
