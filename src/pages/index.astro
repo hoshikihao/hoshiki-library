@@ -299,4 +299,25 @@ function dailyImage(id: string) {
     line-height: var(--lh-snug);
     text-align: left;
   }
+
+  /* 矮屏幕（多数手机浏览器的实际可视高度）收紧竖向节奏，
+     让日签图片一打开就能完整看到，不用先往上滚一下 */
+  @media (max-width: 480px), (max-height: 750px) {
+    .ghome__center {
+      margin-top: var(--s-6);
+    }
+    .ghome__wordmark {
+      margin-bottom: var(--s-4);
+      font-size: 2.25rem;
+    }
+    .gentries {
+      margin-top: var(--s-4);
+    }
+    .daily {
+      margin-top: var(--s-6);
+    }
+    .daily__card {
+      width: 180px;
+    }
+  }
 </style>
