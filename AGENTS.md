@@ -5,7 +5,7 @@
 - 站点:星树文库,读书、观影与好文库,公开站,域名 `read.hoshikihao.com`
 - 技术:Astro 静态站(`output: 'static'`),Cloudflare Workers(静态资源托管)部署
 - 仓库:`github.com/hoshikihao/hoshiki-library`(public)
-- 五个栏目:古木(古文)/ 新枝(随笔)/ 摘星(时文选粹)/ 书林(书籍)/ 光影(影视)
+- 五个栏目:古木(古文)/ 新枝(随笔)/ 星雨(时文选粹)/ 书林(书籍)/ 光影(影视)
 - Slogan:星树文库 · 甄选天下好文好书
 
 ## 技术约束
@@ -17,7 +17,7 @@
 
 ## 视觉:全站 Kami + 各栏目独立主题
 
-- 古木 / 新枝 / 摘星 / 关于 / 搜索:统一走 Kami Parchment(暖米白、霞鹜文楷、靛蓝强调),定义在 `src/styles/tokens.css`,不要改这份全局默认值
+- 古木 / 新枝 / 星雨 / 关于 / 搜索:统一走 Kami Parchment(暖米白、霞鹜文楷、靛蓝强调),定义在 `src/styles/tokens.css`,不要改这份全局默认值
 - 首页、书林、光影三页各有独立视觉,做法是给 `BaseLayout` 传 `bodyClass`,再在页面内用 `<style is:global>` 针对 `body.<class>` 覆盖设计 token(`--c-canvas` `--c-accent` `--font-serif-*` 等),只在该页生效,不污染别处
   - 首页:`bodyClass="google-home"`,Google 首页风(白底、多色马卡龙入口、呼吸感、色斑背景)
   - 书林:`bodyClass="readwise-books"`,Readwise 风(白底、珊瑚橙 `#ff5a36`、无衬线、卡片式书目)

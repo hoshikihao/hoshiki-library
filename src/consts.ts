@@ -23,7 +23,7 @@ interface CategoryMeta {
 export const CATEGORIES: CategoryMeta[] = [
   { id: 'gumu', name: '古木', blurb: '古文' },
   { id: 'xinzhi', name: '新枝', blurb: '随笔' },
-  { id: 'shixing', name: '摘星', blurb: '时文选粹' },
+  { id: 'shixing', name: '星雨', blurb: '时文选粹' },
 ];
 
 export const CATEGORY_MAP: Record<CategoryId, CategoryMeta> = Object.fromEntries(
@@ -58,7 +58,7 @@ export const FILM_TYPE: { id: FilmType; name: string }[] = [
 export const ENTRY_LINKS = [
   { href: '/gumu', name: '古木', bg: '#e8f3e7', fg: '#2f6b2c' },
   { href: '/xinzhi', name: '新枝', bg: '#e5f0fc', fg: '#1a56c4' },
-  { href: '/shixing', name: '摘星', bg: '#fdf3dc', fg: '#a8730a' },
+  { href: '/shixing', name: '星雨', bg: '#fdf3dc', fg: '#a8730a' },
   { href: '/books', name: '书林', bg: '#fce8e5', fg: '#c1432a' },
   { href: '/films', name: '光影', bg: '#f1e7fa', fg: '#7a3fb8' },
 ] as const;

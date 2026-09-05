@@ -16,7 +16,7 @@ const articles = defineCollection({
       draft: z.boolean().default(false),
     })
     .refine((d) => d.category !== 'shixing' || Boolean(d.sourceUrl), {
-      message: '摘星（shixing）文章必须填 sourceUrl',
+      message: '星雨（shixing）文章必须填 sourceUrl',
       path: ['sourceUrl'],
     }),
 });
