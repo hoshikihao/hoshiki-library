@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, author, date, written, sourceUrl, commentary, tags } = entry.data;
+const { title, author, date, written, sourceUrl, commentary, related, tags } = entry.data;
 const meta = CATEGORY_MAP[entry.data.category as CategoryId];
 const dateStr = date.toISOString().slice(0, 10);
 const when = written ?? `收录于 ${dateStr}`;
@@ -47,6 +47,24 @@ const when = written ?? `收录于 ${dateStr}`;
     }
 
     {commentary && <Commentary text={commentary} />}
+
+    {
+      related.length > 0 && (
+        <section class="article__related">
+          <p class="article__related-label">相关阅读</p>
+          <ul>
+            {related.map((r) => (
+              <li>
+                <a href={r.url} target="_blank" rel="noopener">
+                  {r.title}
+                </a>
+                {r.source && <span class="meta"> · {r.source}</span>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
 
     {
       tags.length > 0 && (
@@ -92,6 +110,27 @@ const when = written ?? `收录于 ${dateStr}`;
   }
   .article__source {
     margin-top: var(--s-8);
+  }
+  .article__related {
+    margin-top: var(--s-12);
+  }
+  .article__related-label {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-faint);
+  }
+  .article__related ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .article__related li + li {
+    margin-top: var(--s-2);
+  }
+  .article__related a {
+    color: var(--c-accent);
   }
   .article__tags {
     margin-top: var(--s-12);

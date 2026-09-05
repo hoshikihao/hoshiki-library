@@ -13,6 +13,10 @@ const articles = defineCollection({
     written: z.string().optional(), // 原文写作时间，自由文本（如「北宋嘉佑二年（1057）」）；填了就替代 byline 里的「收录于 …」
     sourceUrl: z.string().url().optional(), // 原文链接，有就填，渲染成文末「读原文」按钮
     commentary: z.string().optional(), // 文末点评，Markdown
+    // 相关阅读：文末渲染成链接列表，source 可空
+    related: z
+      .array(z.object({ title: z.string(), url: z.string().url(), source: z.string().optional() }))
+      .default([]),
     draft: z.boolean().default(false),
   }),
 });

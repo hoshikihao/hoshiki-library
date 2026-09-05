@@ -39,7 +39,7 @@
 
 ## 目录
 
-- 文章:`src/content/articles/<slug>.md`,一篇一个文件
+- 文章:`src/content/articles/<slug>.md`,一篇一个文件;正文配图放 `public/articles/<slug>/`,正文里用 `/articles/<slug>/xxx.jpg` 引用(外站图先落本地,防盗链热链加载不出)
 - 书籍:`src/data/books.yaml`,全部集中一个文件;封面 `public/covers/` 或远程 URL
 - 影视:`src/data/films.yaml`,结构同 books;海报 `public/posters/` 或远程 URL
 - 首页日签图池:`src/assets/daily/<id>.(jpg|png|webp)`,id 对应 `src/data/daily-quotes.ts`
@@ -56,6 +56,7 @@
 - `sourceUrl`:可选,有原文链接就填(渲染成文末「读原文」按钮)
 - `author` 可选
 - `commentary` 可选,Markdown,渲染到文末点评块
+- `related` 可选,相关阅读,`{ title, url, source? }` 数组,渲染到文末链接列表
 - `draft` 可选,默认 `false`
 - 正文文件只放原文,不写点评、不写摘要
 
