@@ -2,7 +2,7 @@
 title: 诗人即将被捕
 category: shixing
 tags: [译文, 苏联, 审查制度]
-date: 2026-09-06
+date: 2026-09-04
 author: 王江山 编译
 written: 2017 年 11 月 23 日（苔原公众号，编译自 BBC Culture）
 sourceUrl: https://mp.weixin.qq.com/s/pBd7EhyG6obhVvbq2WTpaA

@@ -2,7 +2,7 @@
 title: 江湖月报
 category: shixing
 tags: [台词, 武林外传, 剧集]
-date: 2026-09-06
+date: 2026-09-05
 written: 电视剧《武林外传》台词（2006）
 ---
 

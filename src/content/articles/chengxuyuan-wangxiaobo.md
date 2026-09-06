@@ -2,7 +2,7 @@
 title: 程序员王小波
 category: shixing
 tags: [王小波, 人物, 程序员]
-date: 2026-09-06
+date: 2026-09-05
 author: 伊恩·约翰逊（张彦）
 written: 2017 年，载《纽约书评》
 sourceUrl: https://www.chinafile.com/library/nyrb-china-archive/sexual-life-modern-china

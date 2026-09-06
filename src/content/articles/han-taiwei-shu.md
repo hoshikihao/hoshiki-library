@@ -2,7 +2,7 @@
 title: 上枢密韩太尉书
 category: gumu
 tags: [宋代, 书信, 苏辙]
-date: 2026-09-05
+date: 2026-09-02
 author: 苏辙
 written: 北宋嘉佑二年（1057 年）
 ---

@@ -2,7 +2,7 @@
 title: 请让我做一个歌颂者
 category: shixing
 tags: [时评, 连岳, 李子暘]
-date: 2026-09-06
+date: 2026-09-03
 author: 伯通
 written: 2017 年 12 月 8 日（原载虎嗅）
 sourceUrl: https://mp.weixin.qq.com/s/o4WSOibbN4-2NNZBnJxI7Q

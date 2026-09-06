@@ -2,7 +2,7 @@
 title: 一根线
 category: xinzhi
 tags: [札记, 时政, 阅读]
-date: 2026-09-06
+date: 2026-09-05
 written: 2020 年
 ---
 

@@ -2,7 +2,7 @@
 title: 《使徒行者 2》片头名言
 category: shixing
 tags: [名言, 剧集, 使徒行者2]
-date: 2026-09-06
+date: 2026-09-03
 written: 剧集片头字卡，星树浩辑
 ---
 

@@ -2,7 +2,7 @@
 title: 让我们跟着范冰冰重温检讨之道
 category: shixing
 tags: [时评, 大象公会, 检讨文化]
-date: 2026-09-06
+date: 2026-09-05
 author: 黄章晋、王家骏
 written: 2018 年 10 月（大象公会）
 ---

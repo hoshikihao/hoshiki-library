@@ -2,7 +2,7 @@
 title: 新的中国人
 category: xinzhi
 tags: [札记, 身份]
-date: 2026-09-06
+date: 2026-09-04
 written: 2017 年
 ---
 

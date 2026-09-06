@@ -2,7 +2,7 @@
 title: 再来一局
 category: xinzhi
 tags: [札记, 游戏, 西部世界]
-date: 2026-09-06
+date: 2026-09-05
 written: 2017 年
 ---
 
