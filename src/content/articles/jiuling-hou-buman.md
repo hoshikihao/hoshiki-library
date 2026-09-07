@@ -4,7 +4,7 @@ category: shixing
 tags: [时评, 90后, 言论审查]
 date: 2026-09-07
 author: i 小声读书
-written: 2018 年 10 月 27 日（公众号「i 小声读书」）
+written: 2018 年 10 月 27 日
 sourceUrl: https://mp.weixin.qq.com/s/iDws0oaON7RRvEgYGFh6Ag
 ---
 
