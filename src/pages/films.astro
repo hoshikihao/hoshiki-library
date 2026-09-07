@@ -10,7 +10,12 @@ const counts = { anime: 0, series: 0, movie: 0, doc: 0 };
 for (const f of films) counts[f.data.type]++;
 ---
 
-<BaseLayout title="光影" description="星树浩的观影记录：动漫、剧集、电影、纪录片，每部一句话。" bodyClass="bilibili-films">
+<BaseLayout
+  title="光影"
+  description="星树浩的观影记录：动漫、剧集、电影、纪录片，每部一句话。"
+  bodyClass="bilibili-films"
+  ogImage="/og-films.png"
+>
   <div class="page page--wide stack">
     <header>
       <h1>光影</h1>

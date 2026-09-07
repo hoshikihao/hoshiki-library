@@ -9,12 +9,14 @@ interface Props {
   description?: string;
   /** 页面级 body class，用于个别页面覆盖全局配色（如首页的实验样式） */
   bodyClass?: string;
+  /** 分享图路径，栏目页传各自的 og-<id>.png，默认站点通用图 */
+  ogImage?: string;
 }
 
-const { title, description = SITE.description, bodyClass } = Astro.props;
+const { title, description = SITE.description, bodyClass, ogImage } = Astro.props;
 const fullTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} · ${SITE.slogan}`;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
-const ogImage = new URL('/og.png', SITE.url).href;
+const ogImageUrl = new URL(ogImage ?? '/og.png', SITE.url).href;
 ---
 
 <!doctype html>
@@ -35,13 +37,13 @@ const ogImage = new URL('/og.png', SITE.url).href;
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={SITE.title} />
     <meta property="og:locale" content="zh_CN" />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link
       rel="alternate"
       type="application/rss+xml"

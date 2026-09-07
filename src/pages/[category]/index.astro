@@ -16,7 +16,11 @@ const articles = (await getCollection('articles', (e) => !e.data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title={meta.name} description={`${meta.name}（${meta.blurb}）— ${CATEGORIES.length} 个栏目之一`}>
+<BaseLayout
+  title={meta.name}
+  description={`${meta.name}（${meta.blurb}）— ${CATEGORIES.length} 个栏目之一`}
+  ogImage={`/og-${category}.png`}
+>
   <div class="page stack">
     <header>
       <h1>{meta.name}</h1>

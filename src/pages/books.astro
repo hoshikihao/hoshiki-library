@@ -11,7 +11,12 @@ const counts = { reading: 0, read: 0, want: 0 };
 for (const b of books) counts[b.data.status]++;
 ---
 
-<BaseLayout title="书林" description="星树浩的书架：在读、读完、想读，每本一句话。" bodyClass="readwise-books">
+<BaseLayout
+  title="书林"
+  description="星树浩的书架：在读、读完、想读，每本一句话。"
+  bodyClass="readwise-books"
+  ogImage="/og-books.png"
+>
   <div class="page page--wide stack">
     <header>
       <h1>书林</h1>

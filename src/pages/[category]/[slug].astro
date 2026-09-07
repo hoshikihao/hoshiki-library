@@ -21,7 +21,11 @@ const dateStr = date.toISOString().slice(0, 10);
 const when = written ?? `收录于 ${dateStr}`;
 ---
 
-<BaseLayout title={title} description={excerpt(entry.body ?? '', 140)}>
+<BaseLayout
+  title={title}
+  description={excerpt(entry.body ?? '', 140)}
+  ogImage={`/og-${entry.data.category}.png`}
+>
   <article class="page page--read article">
     <nav class="meta article__crumb">
       <a href={`/${meta.id}`}>{meta.name}</a>
