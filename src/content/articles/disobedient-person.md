@@ -4,7 +4,6 @@ category: xinzhi
 tags: [札记, 疫情, 历史]
 date: 2026-09-07
 written: 2026 年 4 月 17 日
-sourceUrl: https://hoshikihao.com/posts/disobedient-person/
 ---
 
 我生来就不是一个听话的人。
