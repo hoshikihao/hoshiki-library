@@ -5,7 +5,6 @@ tags: [散文诗, 纪伯伦, 冰心]
 date: 2026-09-08
 author: 纪伯伦（冰心 译）
 written: 选自《泪与笑》
-sourceUrl: https://telegra.ph/组歌-09-06
 ---
 
 ## 一、浪之歌
