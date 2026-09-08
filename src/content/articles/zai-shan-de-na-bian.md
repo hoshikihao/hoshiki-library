@@ -4,6 +4,10 @@ category: xinzhi
 tags: [自述, 少年, 初中]
 date: "2026-09-09T22:15:00+08:00"
 written: 2013 年 10 月 31 日
+related:
+  - title: 五把米饭盒
+    url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
+    source: 新枝
 ---
 
 ![](/articles/zai-shan-de-na-bian/01.jpg)
