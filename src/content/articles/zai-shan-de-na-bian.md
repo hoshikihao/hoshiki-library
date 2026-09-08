@@ -8,6 +8,9 @@ related:
   - title: 五把米饭盒
     url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
     source: 新枝
+  - title: 樱花草——初一篇
+    url: https://read.hoshikihao.com/xinzhi/yinghuacao-chuyi/
+    source: 新枝
 ---
 
 ![](/articles/zai-shan-de-na-bian/01.jpg)
