@@ -11,6 +11,9 @@ related:
   - title: 樱花草——初一篇
     url: https://read.hoshikihao.com/xinzhi/yinghuacao-chuyi/
     source: 新枝
+  - title: 初一篇续
+    url: https://read.hoshikihao.com/xinzhi/chuyi-pian-xu/
+    source: 新枝
 ---
 
 ![](/articles/zai-shan-de-na-bian/01.jpg)

@@ -5,6 +5,9 @@ tags: [自述, 少年, 初中]
 date: "2026-09-09T23:50:00+08:00"
 written: 2013 年 10 月 10 日
 related:
+  - title: 初一篇续
+    url: https://read.hoshikihao.com/xinzhi/chuyi-pian-xu/
+    source: 新枝
   - title: 在山的那边
     url: https://read.hoshikihao.com/xinzhi/zai-shan-de-na-bian/
     source: 新枝
