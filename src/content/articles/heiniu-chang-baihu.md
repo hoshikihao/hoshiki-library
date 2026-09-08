@@ -20,6 +20,9 @@ related:
   - title: 想起黑牛
     url: https://read.hoshikihao.com/xinzhi/xiangqi-heiniu/
     source: 新枝
+  - title: 老朋友
+    url: https://read.hoshikihao.com/xinzhi/lao-pengyou/
+    source: 新枝
 ---
 
 ![](/articles/heiniu-chang-baihu/01.jpg)

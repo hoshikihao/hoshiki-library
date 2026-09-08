@@ -20,6 +20,9 @@ related:
   - title: 想起黑牛
     url: https://read.hoshikihao.com/xinzhi/xiangqi-heiniu/
     source: 新枝
+  - title: 老朋友
+    url: https://read.hoshikihao.com/xinzhi/lao-pengyou/
+    source: 新枝
 ---
 
 > 书呆子，是某某某人一直对我的印象。她有时也叫我成传浩，不知道为什么每当被这样叫的时候我就会很开心。

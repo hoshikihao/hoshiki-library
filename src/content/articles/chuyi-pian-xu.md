@@ -20,6 +20,9 @@ related:
   - title: 想起黑牛
     url: https://read.hoshikihao.com/xinzhi/xiangqi-heiniu/
     source: 新枝
+  - title: 老朋友
+    url: https://read.hoshikihao.com/xinzhi/lao-pengyou/
+    source: 新枝
 ---
 
 我被分在了七(2)班，班主任是个很矮不管在哪右手总抱个包的成子良，在他讲话结束之后，进来个非常漂亮的姐姐。她说以后就是我们的语文老师了，叫蒋晓静，其他的我不记得了，只依稀记得她的样子。
