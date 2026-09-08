@@ -3,7 +3,7 @@
 export const SITE = {
   title: '星树文库',
   slogan: '甄选天下好文好书',
-  description: '星树浩的私人文库：收藏的好文与好书，每篇附一段点评，附原文跳转。',
+  description: '星树浩的私人文库：看过的好文、好书与好片，以及一些想说的话——一座精神世界的秘密花园。',
   url: 'https://read.hoshikihao.com',
   author: '星树浩',
   authorUrl: 'https://hoshikihao.com',
