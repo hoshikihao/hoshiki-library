@@ -8,6 +8,7 @@ export function excerpt(markdown: string, max = MAX): string {
     .replace(/<[^>]+>/g, ' ') // 内嵌 HTML 标签（如 <div class="verse">）
     .replace(/!\[[^\]]*]\([^)]*\)/g, ' ') // 图片
     .replace(/\[([^\]]*)]\([^)]*\)/g, '$1') // 链接保留文字
+    .replace(/https?:\/\/\S+/g, ' ') // 裸链接（摘要里没意义）
     .replace(/^#{1,6}\s+/gm, '') // 标题符号
     .replace(/^\s{0,3}>\s?/gm, '') // 引用符号
     .replace(/[*_~`#>|-]/g, '') // 其余标记
