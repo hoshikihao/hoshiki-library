@@ -8,11 +8,17 @@ related:
   - title: 初一篇续
     url: https://read.hoshikihao.com/xinzhi/chuyi-pian-xu/
     source: 新枝
+  - title: 五把米饭盒
+    url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
+    source: 新枝
   - title: 在山的那边
     url: https://read.hoshikihao.com/xinzhi/zai-shan-de-na-bian/
     source: 新枝
-  - title: 五把米饭盒
-    url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
+  - title: 黑牛唱白狐
+    url: https://read.hoshikihao.com/xinzhi/heiniu-chang-baihu/
+    source: 新枝
+  - title: 想起黑牛
+    url: https://read.hoshikihao.com/xinzhi/xiangqi-heiniu/
     source: 新枝
 ---
 

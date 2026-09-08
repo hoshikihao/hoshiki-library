@@ -5,14 +5,20 @@ tags: [自述, 少年, 初中]
 date: "2026-09-09T22:15:00+08:00"
 written: 2013 年 10 月 31 日
 related:
-  - title: 五把米饭盒
-    url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
-    source: 新枝
   - title: 樱花草——初一篇
     url: https://read.hoshikihao.com/xinzhi/yinghuacao-chuyi/
     source: 新枝
   - title: 初一篇续
     url: https://read.hoshikihao.com/xinzhi/chuyi-pian-xu/
+    source: 新枝
+  - title: 五把米饭盒
+    url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
+    source: 新枝
+  - title: 黑牛唱白狐
+    url: https://read.hoshikihao.com/xinzhi/heiniu-chang-baihu/
+    source: 新枝
+  - title: 想起黑牛
+    url: https://read.hoshikihao.com/xinzhi/xiangqi-heiniu/
     source: 新枝
 ---
 

@@ -5,6 +5,18 @@ tags: [札记, 电影, 同学]
 date: "2026-09-08T23:30:00+08:00"
 written: 2019 年 1 月
 related:
+  - title: 樱花草——初一篇
+    url: https://read.hoshikihao.com/xinzhi/yinghuacao-chuyi/
+    source: 新枝
+  - title: 初一篇续
+    url: https://read.hoshikihao.com/xinzhi/chuyi-pian-xu/
+    source: 新枝
+  - title: 五把米饭盒
+    url: https://read.hoshikihao.com/xinzhi/wu-ba-mifan-he/
+    source: 新枝
+  - title: 在山的那边
+    url: https://read.hoshikihao.com/xinzhi/zai-shan-de-na-bian/
+    source: 新枝
   - title: 黑牛唱白狐
     url: https://read.hoshikihao.com/xinzhi/heiniu-chang-baihu/
     source: 新枝
