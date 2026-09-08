@@ -1,7 +1,7 @@
 ---
 title: 已来的主人翁
 category: xinzhi
-tags: [札记, 话语权, 少年作家]
+tags: [札记, 话语权]
 date: "2026-09-08T23:40:00+08:00"
 written: 2014 年 9 月 8 日（QQ 空间）
 ---
