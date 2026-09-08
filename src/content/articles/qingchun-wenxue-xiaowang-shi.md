@@ -2,7 +2,7 @@
 title: 我的青春文学消亡史
 category: xinzhi
 tags: [札记, 阅读, 青春]
-date: 2026-09-07
+date: "2026-09-07T22:07:19+08:00"
 written: 2025 年 10 月 17 日
 ---
 

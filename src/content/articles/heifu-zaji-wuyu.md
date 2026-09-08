@@ -2,7 +2,7 @@
 title: 黑腹杂记·吾欲
 category: shixing
 tags: [随笔, 文言, 腹黑猫]
-date: 2026-09-08
+date: "2026-09-08T15:43:40+08:00"
 author: 腹黑猫
 written: 2016 年 8 月
 sourceUrl: https://www.fuheicat.com/?p=688

@@ -2,7 +2,7 @@
 title: 穗子
 category: shixing
 tags: [当代小说, 严歌苓, 穗子物语]
-date: 2026-09-02
+date: "2026-09-02T00:17:33+08:00"
 author: 严歌苓
 written: 2005，选自《穗子物语》
 ---

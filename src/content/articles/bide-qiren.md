@@ -2,7 +2,7 @@
 title: 彼得其人
 category: shixing
 tags: [外国文学, 麦克尤恩, 梦想家彼得]
-date: 2026-09-05
+date: "2026-09-05T15:21:10+08:00"
 author: 伊恩·麦克尤恩，孙仲旭 译
 written: 节选自《梦想家彼得》
 ---

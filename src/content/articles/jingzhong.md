@@ -2,7 +2,7 @@
 title: 镜中
 category: shixing
 tags: [新诗, 张枣, 现代诗]
-date: 2026-09-08
+date: "2026-09-08T22:55:46+08:00"
 author: 张枣
 written: 1984 年
 ---

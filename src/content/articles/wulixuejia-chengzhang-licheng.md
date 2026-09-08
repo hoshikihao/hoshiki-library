@@ -2,7 +2,7 @@
 title: 一个物理学家的成长历程
 category: shixing
 tags: [科普, 加来道雄, 物理]
-date: 2026-09-08
+date: "2026-09-08T00:47:22+08:00"
 author: 加来道雄
 written: 选自《超越时空》
 ---

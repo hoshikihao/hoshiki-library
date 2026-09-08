@@ -2,7 +2,7 @@
 title: 错误
 category: shixing
 tags: [新诗, 郑愁予, 现代诗]
-date: 2026-09-08
+date: "2026-09-08T23:06:13+08:00"
 author: 郑愁予
 written: 1954 年
 ---

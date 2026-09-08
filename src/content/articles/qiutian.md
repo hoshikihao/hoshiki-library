@@ -2,7 +2,7 @@
 title: 秋天
 category: shixing
 tags: [新诗, 何其芳, 现代诗]
-date: 2026-09-08
+date: "2026-09-08T23:02:18+08:00"
 author: 何其芳
 written: 1932 年 9 月
 ---

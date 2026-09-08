@@ -2,7 +2,7 @@
 title: 小石潭记
 category: gumu
 tags: [唐代, 游记, 柳宗元]
-date: 2026-09-08
+date: "2026-09-08T23:09:57+08:00"
 author: 柳宗元
 written: 唐元和四年（809 年），贬谪永州时
 ---

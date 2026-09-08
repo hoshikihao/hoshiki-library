@@ -2,7 +2,7 @@
 title: 清河二首
 category: gumu
 tags: [三国, 五言诗, 曹丕]
-date: 2026-09-08
+date: "2026-09-08T16:53:14+08:00"
 author: 曹丕
 written: 曹魏黄初六年（225 年），伐吴还师途中
 commentary: |

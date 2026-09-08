@@ -2,7 +2,7 @@
 title: ChatGPT 眼中的星树浩
 category: xinzhi
 tags: [札记, AI, 自画像]
-date: 2026-09-08
+date: "2026-09-08T22:48:17+08:00"
 author: ChatGPT
 written: 2025 年 4 月
 ---

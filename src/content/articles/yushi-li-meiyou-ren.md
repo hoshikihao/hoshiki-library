@@ -2,7 +2,7 @@
 title: 浴室里没有人，水是我开的
 category: shixing
 tags: [网络文学, 潮文, 孤独]
-date: 2026-09-07
+date: "2026-09-07T21:25:46+08:00"
 author: 佚名
 written: 约 2012 年起于网络流传
 sourceUrl: https://lihkg.com/thread/193896/page/1

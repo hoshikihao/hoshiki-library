@@ -2,7 +2,7 @@
 title: 女神
 category: shixing
 tags: [随笔, 渚碧, 暗恋]
-date: 2026-09-08
+date: "2026-09-08T14:17:04+08:00"
 author: 渚碧
 written: 2019 年 11 月
 sourceUrl: https://jubeny.com/2019/11/the-goddess/

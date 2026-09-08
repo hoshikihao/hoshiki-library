@@ -2,7 +2,7 @@
 title: 作为90后，我对国家有哪些不满意
 category: shixing
 tags: [时评, 90后, 言论审查]
-date: 2026-09-07
+date: "2026-09-07T23:55:29+08:00"
 author: i 小声读书
 written: 2018 年 10 月 27 日
 sourceUrl: https://mp.weixin.qq.com/s/iDws0oaON7RRvEgYGFh6Ag

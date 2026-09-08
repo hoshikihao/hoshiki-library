@@ -2,7 +2,7 @@
 title: 不听话的人
 category: xinzhi
 tags: [札记, 疫情, 历史]
-date: 2026-09-07
+date: "2026-09-07T22:00:10+08:00"
 written: 2026 年 4 月 17 日
 ---
 

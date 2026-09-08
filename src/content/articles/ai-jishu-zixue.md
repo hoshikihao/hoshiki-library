@@ -2,7 +2,7 @@
 title: 浅谈 AI 时代下的技术自学
 category: shixing
 tags: [AI, 自学, 编程]
-date: 2026-09-07
+date: "2026-09-07T21:14:36+08:00"
 author: AlexTheNomad
 written: 2025 年 4 月（少数派 Matrix）
 sourceUrl: https://sspai.com/post/97972

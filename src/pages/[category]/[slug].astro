@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Commentary from '../../components/Commentary.astro';
 import { CATEGORY_MAP, type CategoryId } from '../../consts';
 import { excerpt } from '../../lib/excerpt';
+import { ymd } from '../../lib/date';
 
 export async function getStaticPaths() {
   const articles = await getCollection('articles', (e) => !e.data.draft);
@@ -17,7 +18,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, author, date, written, sourceUrl, commentary, related, tags } = entry.data;
 const meta = CATEGORY_MAP[entry.data.category as CategoryId];
-const dateStr = date.toISOString().slice(0, 10);
+const dateStr = ymd(date);
 const when = written ?? `收录于 ${dateStr}`;
 ---
 

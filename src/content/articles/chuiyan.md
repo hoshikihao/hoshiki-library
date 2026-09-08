@@ -2,7 +2,7 @@
 title: 炊烟
 category: shixing
 tags: [小说, 阿城, 饥荒]
-date: 2026-09-08
+date: "2026-09-08T00:47:21+08:00"
 author: 阿城
 written: 选自《遍地风流》
 ---

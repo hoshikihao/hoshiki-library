@@ -2,7 +2,7 @@
 title: 天注定
 category: xinzhi
 tags: [札记, 贾樟柯, 时政]
-date: 2026-09-07
+date: "2026-09-07T23:38:14+08:00"
 written: 2025 年 9 月 24 日
 ---
 

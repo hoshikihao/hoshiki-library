@@ -2,7 +2,7 @@
 title: 解救被困在超级 App 里的简中互联网
 category: xinzhi
 tags: [札记, 互联网, AI]
-date: 2026-09-07
+date: "2026-09-07T23:38:13+08:00"
 written: 2025 年 10 月 5 日
 ---
 

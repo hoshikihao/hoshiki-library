@@ -2,7 +2,7 @@
 title: 这样算永生了吗
 category: xinzhi
 tags: [札记, AI, 生死]
-date: 2026-09-06
+date: "2026-09-06T19:41:35+08:00"
 written: 2025 年 4 月 8 日
 ---
 

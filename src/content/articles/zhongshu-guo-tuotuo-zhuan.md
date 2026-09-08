@@ -2,7 +2,7 @@
 title: 种树郭橐驼传
 category: gumu
 tags: [唐代, 寓言, 柳宗元]
-date: 2026-09-08
+date: "2026-09-08T23:15:54+08:00"
 author: 柳宗元
 written: 唐代，柳宗元居长安时
 ---

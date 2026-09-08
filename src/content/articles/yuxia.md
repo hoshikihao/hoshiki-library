@@ -2,7 +2,7 @@
 title: 余夏
 category: xinzhi
 tags: [札记, 旧作, 诗]
-date: 2026-09-08
+date: "2026-09-08T22:42:05+08:00"
 written: 2019 年 8 月 10 日
 ---
 

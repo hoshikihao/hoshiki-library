@@ -2,7 +2,7 @@
 title: Game Jam 赛前讨论
 category: xinzhi
 tags: [札记, 游戏开发, game jam]
-date: 2026-09-06
+date: "2026-09-06T19:41:32+08:00"
 written: 2026 年 3 月 26 日
 ---
 

@@ -2,7 +2,7 @@
 title: "悼念我的妻子伊莉丝·考利（1961–2026）——感谢 36 年的美好时光"
 category: shixing
 tags: [译文, 悼文, 斯蒂芬·沃尔弗拉姆]
-date: 2026-09-06
+date: "2026-09-06T21:05:42+08:00"
 author: 斯蒂芬·沃尔弗拉姆
 written: 2026 年 8 月
 sourceUrl: https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/

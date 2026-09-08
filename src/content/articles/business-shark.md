@@ -2,7 +2,7 @@
 title: 像商业鲨鱼一样思考
 category: xinzhi
 tags: [札记, AI, 提示词]
-date: 2026-09-06
+date: "2026-09-06T19:41:31+08:00"
 written: 2025 年 4 月 15 日
 ---
 

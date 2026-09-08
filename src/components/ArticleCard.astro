@@ -1,6 +1,7 @@
 ---
 import { CATEGORY_MAP } from '../consts';
 import { excerpt } from '../lib/excerpt';
+import { ymd } from '../lib/date';
 
 interface Props {
   id: string;
@@ -19,7 +20,7 @@ interface Props {
 
 const { id, data, body, showCategory = false } = Astro.props;
 const href = `/${data.category}/${id}`;
-const dateStr = data.date.toISOString().slice(0, 10);
+const dateStr = ymd(data.date);
 const when = data.written ?? `收录于 ${dateStr}`;
 ---
 

@@ -2,7 +2,7 @@
 title: 读商业畅销书是浪费时间
 category: shixing
 tags: [译文, 商业, 阅读]
-date: 2026-09-06
+date: "2026-09-06T19:41:33+08:00"
 author: Jack（The Orthagonist）
 written: 2025 年 5 月 7 日
 sourceUrl: https://web.archive.org/web/20250521193958/https://antemedian.substack.com/p/why-reading-business-books-is-a-waste
