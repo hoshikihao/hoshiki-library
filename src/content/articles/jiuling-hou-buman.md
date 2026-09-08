@@ -6,7 +6,6 @@ date: 2026-09-07
 author: i 小声读书
 written: 2018 年 10 月 27 日
 sourceUrl: https://mp.weixin.qq.com/s/iDws0oaON7RRvEgYGFh6Ag
-draft: true
 ---
 
 这篇文章算是旧文重发吧，当大家都戏剧化地把结果寄托在某些看起来轻松的锦鲤上的时候，我希望大家要明确知道历史不总是向前发展，命运也不总是会站在好的一边。这样严肃的话题注定不会讨人喜欢，毕竟人人都向往轻松且顺利的人生，我也不例外。
