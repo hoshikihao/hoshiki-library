@@ -20,7 +20,8 @@ const { Content } = await render(entry);
 const { title, author, date, written, sourceUrl, commentary, related, tags } = entry.data;
 const meta = CATEGORY_MAP[entry.data.category as CategoryId];
 const dateStr = ymd(date);
-const when = written ?? `收录于 ${dateStr}`;
+// 没填 written 时的 byline 兜底：新枝是原创随笔，用「写于」；古木/星雨是选录，用「收录于」
+const when = written ?? `${entry.data.category === 'xinzhi' ? '写于' : '收录于'} ${dateStr}`;
 ---
 
 <BaseLayout
