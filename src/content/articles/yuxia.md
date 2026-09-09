@@ -4,6 +4,10 @@ category: xinzhi
 tags: [札记, 旧作, 诗]
 date: "2026-09-08T22:42:05+08:00"
 written: 2019 年 8 月 10 日
+related:
+  - title: 飞马流云的灵气
+    url: https://read.hoshikihao.com/xinzhi/feima-liuyun/
+    source: 新枝
 ---
 
 *旧作，2019 年发于公众号「东郡浪客」。「当时七夕笑牵牛」是回望六年前那首《相之外》。*
