@@ -1,0 +1,26 @@
+---
+// 从搜索结果点进来时（URL 带 ?highlight=<词>），高亮正文里的命中词并滚到第一处。
+// 放在文章页 / 书林 / 光影 —— 这几处正文有 data-pagefind-body，会进搜索索引。
+---
+
+<script is:inline>
+  (() => {
+    const term = new URLSearchParams(location.search).get('highlight');
+    if (!term) return;
+
+    import('/pagefind/pagefind-highlight.js')
+      .then(({ default: PagefindHighlight }) => {
+        new PagefindHighlight({ highlightParam: 'highlight' });
+        // 有 #锚点（Pagefind 子标题定位）就让浏览器滚锚点；
+        // 没有锚点（点标题进来 / 单处匹配）才自动滚到第一个高亮词
+        if (!location.hash) {
+          requestAnimationFrame(() => {
+            document
+              .querySelector('.pagefind-highlight')
+              ?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          });
+        }
+      })
+      .catch(() => {});
+  })();
+</script>

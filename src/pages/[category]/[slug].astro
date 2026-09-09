@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Commentary from '../../components/Commentary.astro';
+import SearchHighlight from '../../components/SearchHighlight.astro';
 import { CATEGORY_MAP, type CategoryId } from '../../consts';
 import { excerpt } from '../../lib/excerpt';
 import { ymd } from '../../lib/date';
@@ -83,6 +84,8 @@ const when = written ?? `收录于 ${dateStr}`;
       )
     }
   </article>
+
+  <SearchHighlight />
 </BaseLayout>
 
 <style>
