@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTagBuckets } from '../lib/tags';
+
+const tagList = (await getTagBuckets()).map((b) => ({ name: b.tag, count: b.total }));
 ---
 
 <BaseLayout title="搜索" description="搜索星树文库的全部文章与书籍。">
@@ -9,12 +12,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <div class="page stack">
     <h1>搜索</h1>
+    <section class="tag-hits" hidden aria-label="相关标签">
+      <p class="tag-hits__label">相关标签</p>
+      <ul class="tag-hits__list"></ul>
+    </section>
     <div id="search" data-pagefind-ignore></div>
     <noscript><p class="meta">搜索需要开启 JavaScript。</p></noscript>
   </div>
 </BaseLayout>
 
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline define:vars={{ tagList }}>
+  (() => {
+    const section = document.querySelector('.tag-hits');
+    const list = document.querySelector('.tag-hits__list');
+    if (!section || !list) return;
+
+    const render = (raw) => {
+      const q = (raw || '').trim().toLowerCase();
+      const hits = q
+        ? tagList.filter((t) => t.name.toLowerCase().includes(q)).slice(0, 12)
+        : [];
+      if (!hits.length) {
+        section.hidden = true;
+        list.innerHTML = '';
+        return;
+      }
+      list.innerHTML = hits
+        .map(
+          (t) =>
+            `<li><a class="tag" href="/tags/${encodeURIComponent(t.name)}">#${t.name} <span class="tag-hits__n">${t.count}</span></a></li>`,
+        )
+        .join('');
+      section.hidden = false;
+    };
+
+    // 初始：URL 的 ?q=
+    render(new URLSearchParams(location.search).get('q') || '');
+
+    // Pagefind 输入框出现后跟随其内容刷新（dev 下无此输入框，仅吃 ?q=）
+    let timer;
+    const bind = () => {
+      const el = document.querySelector('#search input');
+      if (!el) return false;
+      el.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(() => render(el.value), 120);
+      });
+      return true;
+    };
+    if (!bind()) {
+      let tries = 0;
+      const iv = setInterval(() => {
+        if (bind() || ++tries > 40) clearInterval(iv);
+      }, 100);
+    }
+  })();
+</script>
 <script is:inline>
   (() => {
     const mount = document.getElementById('search');
@@ -50,6 +104,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   })();
 </script>
+
+<style>
+  .tag-hits {
+    margin-bottom: var(--s-8);
+  }
+  .tag-hits__label {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-faint);
+  }
+  .tag-hits__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+  .tag-hits__n {
+    color: var(--c-ink-faint);
+  }
+</style>
 
 <style is:global>
   :root {
