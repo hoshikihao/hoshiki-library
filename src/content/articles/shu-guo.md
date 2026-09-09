@@ -4,6 +4,7 @@ category: shixing
 tags: [小说, 科幻, 民国]
 date: "2026-09-09T23:59:00+08:00"
 author: 蔡建峰
+written: 2025 年 6 月 21 日，首发于「不存在科幻」
 sourceUrl: https://mp.weixin.qq.com/s/fI-7wz1De-lx3X30wy1J5Q
 ---
 
@@ -481,4 +482,4 @@ sourceUrl: https://mp.weixin.qq.com/s/fI-7wz1De-lx3X30wy1J5Q
 
 ---
 
-*原载于作者微信公众号，分两次刊出：[上篇](https://mp.weixin.qq.com/s/fI-7wz1De-lx3X30wy1J5Q)、[下篇](https://mp.weixin.qq.com/s/Q5A4FFn2ObYBeJ4YGxQcog)。*
+*原载于「不存在科幻」（2025 年 6 月 21 日），分上、下两篇刊出：[上篇](https://mp.weixin.qq.com/s/fI-7wz1De-lx3X30wy1J5Q)、[下篇](https://mp.weixin.qq.com/s/Q5A4FFn2ObYBeJ4YGxQcog)。*
