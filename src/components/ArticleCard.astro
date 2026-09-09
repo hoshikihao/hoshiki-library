@@ -21,7 +21,8 @@ interface Props {
 const { id, data, body, showCategory = false } = Astro.props;
 const href = `/${data.category}/${id}`;
 const dateStr = ymd(data.date);
-const when = data.written ?? `收录于 ${dateStr}`;
+// 列表卡片只显示日期，不加「写于 / 收录于」前缀（和有 written 的卡片一致）
+const when = data.written ?? dateStr;
 ---
 
 <article class="card">
