@@ -26,9 +26,10 @@ export async function getTagBuckets(): Promise<TagBucket[]> {
     return b;
   };
 
-  for (const a of articles) for (const t of a.data.tags) at(t).articles.push(a);
-  for (const bk of books) for (const t of bk.data.tags) at(t).books.push(bk);
-  for (const f of films) for (const t of f.data.tags) at(t).films.push(f);
+  // 用 Set 去重：同一条内容里重复写的标签（如 tags: [诗, 诗]）只计一次
+  for (const a of articles) for (const t of new Set(a.data.tags)) at(t).articles.push(a);
+  for (const bk of books) for (const t of new Set(bk.data.tags)) at(t).books.push(bk);
+  for (const f of films) for (const t of new Set(f.data.tags)) at(t).films.push(f);
 
   const buckets = [...map.values()];
   for (const b of buckets) {
@@ -37,8 +38,4 @@ export async function getTagBuckets(): Promise<TagBucket[]> {
   buckets.sort((a, b) => b.total - a.total || a.tag.localeCompare(b.tag, 'zh'));
 
   return buckets;
-}
-
-export async function getTagBucket(tag: string): Promise<TagBucket | undefined> {
-  return (await getTagBuckets()).find((b) => b.tag === tag);
 }
