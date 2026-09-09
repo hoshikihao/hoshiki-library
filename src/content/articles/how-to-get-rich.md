@@ -8,8 +8,6 @@ written: 2018 年 5 月 31 日，发于 X（@naval）
 sourceUrl: https://x.com/naval/status/1002103360646823936
 ---
 
-*How to Get Rich (without getting lucky) —— 2018 年的推文串*
-
 How to Get Rich (without getting lucky):
 
 如何致富（不靠运气）：
