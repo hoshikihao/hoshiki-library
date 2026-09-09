@@ -5,12 +5,21 @@ import { getTagBuckets } from '../../lib/tags';
 const buckets = await getTagBuckets();
 ---
 
-<BaseLayout title="标签" description="按主题浏览全部文章标签。">
+<BaseLayout title="标签" description="按主题浏览全部标签。">
   <div class="page stack">
     <header>
       <h1>标签</h1>
-      <p class="meta">共 {buckets.length} 个标签</p>
+      <p class="meta"><span id="tag-count">{buckets.length}</span> 个标签</p>
     </header>
+
+    <input
+      type="search"
+      id="tag-filter"
+      class="tag-filter"
+      placeholder="筛选标签…"
+      autocomplete="off"
+      hidden
+    />
 
     <ul class="tag-cloud">
       {
@@ -26,6 +35,31 @@ const buckets = await getTagBuckets();
   </div>
 </BaseLayout>
 
+<script>
+  const input = document.querySelector<HTMLInputElement>('#tag-filter');
+  const count = document.querySelector<HTMLElement>('#tag-count');
+  const items = [...document.querySelectorAll<HTMLLIElement>('.tag-cloud li')];
+
+  if (input && count && items.length) {
+    input.hidden = false;
+    const total = items.length;
+
+    // 标签名直接读 li 的 data-tag（Task 2 已写入）
+    const names = items.map((li) => (li.dataset.tag || '').toLowerCase());
+
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      let shown = 0;
+      items.forEach((li, i) => {
+        const hit = !q || names[i].includes(q);
+        li.hidden = !hit;
+        if (hit) shown++;
+      });
+      count.textContent = String(q ? shown : total);
+    });
+  }
+</script>
+
 <style>
   .tag-cloud {
     list-style: none;
@@ -40,5 +74,20 @@ const buckets = await getTagBuckets();
   }
   .tag-cloud__n {
     color: var(--c-ink-faint);
+  }
+  .tag-filter {
+    width: 100%;
+    max-width: 22rem;
+    padding: var(--s-3) var(--s-4);
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    color: var(--c-ink);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius-sm);
+  }
+  .tag-filter:focus {
+    outline: 2px solid var(--c-accent-weak);
+    border-color: var(--c-accent);
   }
 </style>
