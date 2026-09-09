@@ -73,6 +73,7 @@
 `src/data/books.yaml` 顶层是 `id: {书}` 的映射,不是数组。id 用英文/拼音短横线。
 
 - `title` `author` `cover` `status` `note` 全部必填
+- `tags` 可选,字符串数组,与文章标签共用 `/tags` 聚合页
 - `status` 取值 `reading` | `read` | `want`
 - `note` 一句话短评
 - 不提供每本书的下载链接;书林页顶部是 Anna's Archive / Z-Library / Telegram bot 小树 三个统一入口,不针对单本书
@@ -82,6 +83,7 @@
 `src/data/films.yaml` 结构同 books.yaml,顶层 `id: {片}` 映射。
 
 - `title` `director` `poster` `type` `note` 全部必填
+- `tags` 可选,字符串数组,与文章标签共用 `/tags` 聚合页
 - `type` 取值 `anime` | `series` | `movie` | `doc`,按类型分组(不追踪观看进度)
 
 ## 首页日签

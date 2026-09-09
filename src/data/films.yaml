@@ -1,5 +1,5 @@
 # 影视清单：顶层为 id -> 片。id 用英文/拼音短横线。
-# 字段：title / director / poster / type(anime|series|movie|doc) / note
+# 字段：title / director / poster / type(anime|series|movie|doc) / note / tags（可选，字符串数组）
 # poster 可用 /posters/xxx.svg（放 public/posters/）或远程图片 URL
 
 qian_yu_qian_xun:
