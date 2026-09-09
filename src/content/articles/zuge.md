@@ -2,7 +2,7 @@
 title: 组歌
 category: shixing
 tags: [散文诗, 纪伯伦, 冰心]
-date: "2026-09-08T00:47:23+08:00"
+date: "2026-09-08T00:47:22+08:00"
 author: 纪伯伦（冰心 译）
 written: 选自《泪与笑》
 ---

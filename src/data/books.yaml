@@ -1,5 +1,5 @@
 # 书籍清单：顶层为 id -> 书。id 用英文/拼音短横线。
-# 字段：title / author / cover / status(reading|read|want) / note
+# 字段：title / author / cover / status(reading|read|want) / note / tags（可选，字符串数组）
 # cover 可用 /covers/xxx.svg（放 public/covers/）或远程图片 URL
 
 zhi-shen-shi-nei:

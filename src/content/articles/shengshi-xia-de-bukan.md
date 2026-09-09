@@ -2,7 +2,7 @@
 title: 盛世下的不堪
 category: shixing
 tags: [时评, 阑夕, 大兴火灾]
-date: "2026-09-03T01:30:10+08:00"
+date: "2026-09-03T01:30:09+08:00"
 author: 阑夕
 written: 2017 年 11 月 20 日
 commentary: |

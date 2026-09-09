@@ -30,6 +30,7 @@ const books = defineCollection({
     cover: z.string(), // /covers/xxx.jpg 或远程 URL
     status: z.enum(['reading', 'read', 'want']),
     note: z.string(), // 一句话短评
+    tags: z.array(z.string()).default([]), // 可选，主题标签，与文章标签共用 /tags 聚合
   }),
 });
 
@@ -42,6 +43,7 @@ const films = defineCollection({
     poster: z.string(), // /posters/xxx.jpg 或远程 URL
     type: z.enum(['anime', 'series', 'movie', 'doc']),
     note: z.string(), // 一句话短评
+    tags: z.array(z.string()).default([]), // 可选，主题标签，与文章标签共用 /tags 聚合
   }),
 });
 

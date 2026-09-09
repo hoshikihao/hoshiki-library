@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTagBuckets } from '../lib/tags';
+
+const tagList = (await getTagBuckets()).map((b) => ({ name: b.tag, count: b.total }));
 ---
 
 <BaseLayout title="搜索" description="搜索星树文库的全部文章与书籍。">
@@ -9,12 +12,66 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <div class="page stack">
     <h1>搜索</h1>
+    <section class="tag-hits" hidden aria-label="相关标签">
+      <p class="tag-hits__label">相关标签</p>
+      <ul class="tag-hits__list"></ul>
+    </section>
     <div id="search" data-pagefind-ignore></div>
     <noscript><p class="meta">搜索需要开启 JavaScript。</p></noscript>
   </div>
 </BaseLayout>
 
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline define:vars={{ tagList }}>
+  (() => {
+    const mount = document.getElementById('search');
+    const section = document.querySelector('.tag-hits');
+    const list = document.querySelector('.tag-hits__list');
+    if (!mount || !section || !list) return;
+
+    const render = (raw) => {
+      const q = (raw || '').trim().toLowerCase();
+      const hits = q
+        ? tagList.filter((t) => t.name.toLowerCase().includes(q)).slice(0, 12)
+        : [];
+      list.textContent = '';
+      if (!hits.length) {
+        section.hidden = true;
+        return;
+      }
+      // 用 DOM API 构建，标签名走 textContent，避免把原始名拼进 innerHTML
+      for (const t of hits) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.className = 'tag';
+        a.href = `/tags/${encodeURIComponent(t.name)}`;
+        a.append(`#${t.name} `);
+        const n = document.createElement('span');
+        n.className = 'tag-hits__n';
+        n.textContent = String(t.count);
+        a.append(n);
+        li.append(a);
+        list.append(li);
+      }
+      section.hidden = false;
+    };
+
+    // 初始：URL 的 ?q=
+    render(new URLSearchParams(location.search).get('q') || '');
+
+    // #search 挂载点解析时已存在，Pagefind 输入框的 input 事件冒泡到它；
+    // 清除按钮只把 value 置空、不触发 input，单独监听 click。
+    // dev 下没有 Pagefind 输入框，只有上面的 ?q= 生效。
+    let timer;
+    mount.addEventListener('input', (e) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => render(e.target.value), 120);
+    });
+    mount.addEventListener('click', (e) => {
+      if (e.target.closest('.pagefind-ui__search-clear')) render('');
+    });
+  })();
+</script>
 <script is:inline>
   (() => {
     const mount = document.getElementById('search');
@@ -51,6 +108,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   })();
 </script>
 
+<style>
+  .tag-hits {
+    margin-bottom: var(--s-8);
+  }
+  .tag-hits__label {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-label);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-ink-faint);
+  }
+  .tag-hits__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+</style>
+
 <style is:global>
   :root {
     --pagefind-ui-primary: var(--c-accent);
@@ -59,5 +137,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     --pagefind-ui-border: var(--c-line);
     --pagefind-ui-font: var(--font-serif);
     --pagefind-ui-border-radius: var(--radius-sm);
+  }
+
+  /* 相关标签的 chip 由 innerHTML/DOM 动态生成，不带 astro scope 属性，规则放全局块 */
+  .tag-hits__n {
+    color: var(--c-ink-faint);
+  }
+  /* 每个 chip 独占一个 li，.tag:nth-of-type 永远是 1；用 li 的 nth-child 交替底色 */
+  .tag-hits__list li:nth-child(even) .tag {
+    background: var(--c-tag-b);
   }
 </style>
