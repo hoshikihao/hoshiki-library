@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookShelf from '../components/BookShelf.astro';
+import SearchHighlight from '../components/SearchHighlight.astro';
 import { BOOK_BOT } from '../consts';
 
 const books = await getCollection('books');
@@ -65,6 +66,8 @@ for (const b of books) counts[b.data.status]++;
       <BookShelf books={books} />
     </div>
   </div>
+
+  <SearchHighlight />
 </BaseLayout>
 
 <script>

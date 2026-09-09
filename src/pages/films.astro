@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FilmShelf from '../components/FilmShelf.astro';
+import SearchHighlight from '../components/SearchHighlight.astro';
 
 const films = await getCollection('films');
 
@@ -69,6 +70,8 @@ for (const f of films) counts[f.data.type]++;
       <FilmShelf films={films} />
     </div>
   </div>
+
+  <SearchHighlight />
 </BaseLayout>
 
 <script>

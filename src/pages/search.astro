@@ -91,6 +91,8 @@ const tagList = (await getTagBuckets()).map((b) => ({ name: b.tag, count: b.tota
         element: '#search',
         showSubResults: true,
         showImages: false,
+        // 结果链接带上 ?highlight=<词>，落地页由 SearchHighlight 组件高亮并滚动
+        highlightParam: 'highlight',
         translations: {
           placeholder: '搜索文章、书名、作者、标签…',
           zero_results: '没有找到与「[SEARCH_TERM]」相关的内容',
