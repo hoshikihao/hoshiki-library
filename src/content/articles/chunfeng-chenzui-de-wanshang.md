@@ -5,7 +5,6 @@ tags: [小说, 郁达夫, 现代文学]
 date: "2026-09-10T17:00:00+08:00"
 author: 郁达夫
 written: 1923 年 7 月，初载《创造季刊》
-sourceUrl: https://zh.wikisource.org/wiki/春風沉醉的晚上
 ---
 
 ## 一
