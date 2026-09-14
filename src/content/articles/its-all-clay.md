@@ -4,7 +4,7 @@ category: shixing
 tags: [译文, 随笔, 自我成长]
 date: "2026-09-14T09:09:00+08:00"
 author: Jeet Mehta
-written: 2025
+written: "2025"
 sourceUrl: https://www.jeetmehta.com/posts/its-all-clay
 ---
 
