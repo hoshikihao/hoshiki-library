@@ -29,7 +29,7 @@ const when = written ?? `${entry.data.category === 'xinzhi' ? '写于' : '收录
   description={excerpt(entry.body ?? '', 140)}
   ogImage={`/og-${entry.data.category}.png`}
 >
-  <article class="page page--read article">
+  <article class="page page--read article" data-pagefind-body>
     <nav class="meta article__crumb">
       <a href={`/${meta.id}`}>{meta.name}</a>
     </nav>
@@ -39,7 +39,7 @@ const when = written ?? `${entry.data.category === 'xinzhi' ? '写于' : '收录
       {author && <>{author} · </>}{when}
     </p>
 
-    <div class="article__body" data-pagefind-body>
+    <div class="article__body">
       <Content />
     </div>
 
