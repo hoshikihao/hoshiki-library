@@ -127,8 +127,16 @@ function dailyImage(id: string) {
   .blob {
     position: absolute;
     display: block;
-    border-radius: 50%;
-    filter: blur(70px);
+    /* 用径向渐变模拟 blur(70px) 的柔边:iOS WebKit 下 filter:blur 与前景动画合成层叠加会渲染出矩形色带 */
+    background: radial-gradient(
+      closest-side,
+      var(--c) 15%,
+      color-mix(in srgb, var(--c) 84%, transparent) 36%,
+      color-mix(in srgb, var(--c) 50%, transparent) 57%,
+      color-mix(in srgb, var(--c) 16%, transparent) 78%,
+      transparent
+    );
+    transform: scale(1.75);
     opacity: 0.4;
   }
   .blob--blue {
@@ -136,14 +144,14 @@ function dailyImage(id: string) {
     height: 380px;
     top: -120px;
     left: -80px;
-    background: #4285f4;
+    --c: #4285f4;
   }
   .blob--coral {
     width: 320px;
     height: 320px;
     top: 40px;
     right: -100px;
-    background: #ea4335;
+    --c: #ea4335;
     opacity: 0.3;
   }
   .blob--amber {
@@ -151,7 +159,7 @@ function dailyImage(id: string) {
     height: 300px;
     bottom: 20px;
     left: 8%;
-    background: #fbbc05;
+    --c: #fbbc05;
     opacity: 0.35;
   }
   .blob--green {
@@ -159,7 +167,7 @@ function dailyImage(id: string) {
     height: 340px;
     bottom: -140px;
     right: 10%;
-    background: #34a853;
+    --c: #34a853;
     opacity: 0.3;
   }
 
