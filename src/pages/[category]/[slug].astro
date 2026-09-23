@@ -36,7 +36,7 @@ const when = written ?? `${entry.data.category === 'xinzhi' ? '写于' : '收录
 
     <h1>{title}</h1>
     <p class="meta article__byline">
-      {author && <>{author} · </>}{when}
+      {[author, when].filter(Boolean).join(' · ')}
     </p>
 
     <div class="article__body">
