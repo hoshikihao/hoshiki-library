@@ -3,8 +3,8 @@ title: 爷爷和小树
 category: shixing
 tags: [李昆纯, 语文, 小学]
 date: "2026-09-25T01:32:00+08:00"
-author: 李昆纯
-written: 选自人教版语文一年级上册
+author: 李昆纯（原作）
+written: 选自语文一年级上册
 ---
 
 我家门口有一棵小树。

@@ -4,7 +4,7 @@ category: shixing
 tags: [散文, 宗璞, 语文, 初中]
 date: "2026-09-25T00:45:00+08:00"
 author: 宗璞
-written: 选自人教版语文七年级上册
+written: 选自语文七年级上册
 ---
 
 我不由得停住了脚步。

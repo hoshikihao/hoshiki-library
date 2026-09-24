@@ -3,7 +3,7 @@ title: 小小竹排画中游
 category: shixing
 tags: [儿歌, 语文, 小学]
 date: "2026-09-25T00:59:00+08:00"
-written: 选自人教版语文一年级上册
+written: 选自语文一年级上册
 ---
 
 <div class="verse">
