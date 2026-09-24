@@ -1,7 +1,7 @@
 ---
 title: 紫藤萝瀑布
 category: shixing
-tags: [散文, 宗璞]
+tags: [散文, 宗璞, 语文]
 date: "2026-09-25T00:45:00+08:00"
 author: 宗璞
 written: 选自统编版语文七年级下册
