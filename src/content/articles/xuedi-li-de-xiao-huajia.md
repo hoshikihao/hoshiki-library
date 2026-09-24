@@ -1,10 +1,10 @@
 ---
 title: 雪地里的小画家
 category: shixing
-tags: [儿歌, 程宏明, 语文]
+tags: [儿歌, 程宏明, 语文, 小学]
 date: "2026-09-25T00:58:00+08:00"
 author: 程宏明
-written: 选自统编版语文一年级上册
+written: 选自人教版语文一年级上册
 ---
 
 <div class="verse">

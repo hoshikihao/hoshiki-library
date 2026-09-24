@@ -1,7 +1,7 @@
 ---
 title: 和时间赛跑
 category: shixing
-tags: [散文, 林清玄, 语文]
+tags: [散文, 林清玄, 语文, 小学]
 date: "2026-09-25T00:56:00+08:00"
 author: 林清玄
 written: 选自人教版语文三年级下册

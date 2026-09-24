@@ -1,10 +1,10 @@
 ---
 title: 天上的街市
 category: shixing
-tags: [新诗, 郭沫若, 现代诗, 语文]
+tags: [新诗, 郭沫若, 现代诗, 语文, 初中]
 date: "2026-09-25T00:56:00+08:00"
 author: 郭沫若
-written: 选自统编版语文七年级上册
+written: 选自人教版语文七年级上册
 ---
 
 <div class="verse">

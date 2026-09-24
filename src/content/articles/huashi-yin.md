@@ -1,7 +1,7 @@
 ---
 title: 化石吟
 category: shixing
-tags: [新诗, 张锋, 现代诗, 语文]
+tags: [新诗, 张锋, 现代诗, 语文, 初中]
 date: "2026-09-25T01:06:00+08:00"
 author: 张锋
 written: 选自人教版语文七年级上册

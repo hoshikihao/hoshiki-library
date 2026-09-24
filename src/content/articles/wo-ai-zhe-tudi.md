@@ -1,10 +1,10 @@
 ---
 title: 我爱这土地
 category: shixing
-tags: [新诗, 艾青, 现代诗, 语文]
+tags: [新诗, 艾青, 现代诗, 语文, 初中]
 date: "2026-09-25T00:54:00+08:00"
 author: 艾青
-written: 选自统编版语文九年级上册
+written: 选自人教版语文九年级下册
 ---
 
 <div class="verse">

@@ -1,7 +1,7 @@
 ---
 title: 星星变奏曲
 category: shixing
-tags: [新诗, 江河, 现代诗, 语文]
+tags: [新诗, 江河, 现代诗, 语文, 初中]
 date: "2026-09-25T00:57:00+08:00"
 author: 江河
 written: 选自人教版语文九年级上册

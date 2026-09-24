@@ -1,7 +1,7 @@
 ---
 title: 旅行家树
 category: shixing
-tags: [散文, 玛拉沁夫, 语文]
+tags: [散文, 玛拉沁夫, 语文, 小学]
 date: "2026-09-25T00:54:00+08:00"
 author: 玛拉沁夫
 written: 选自人教版小学语文第八册（1996 年版）

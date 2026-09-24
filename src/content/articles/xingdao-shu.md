@@ -1,7 +1,7 @@
 ---
 title: 行道树
 category: shixing
-tags: [散文, 张晓风, 语文]
+tags: [散文, 张晓风, 语文, 初中]
 date: "2026-09-25T00:51:00+08:00"
 author: 张晓风
 written: 选自人教版语文七年级上册

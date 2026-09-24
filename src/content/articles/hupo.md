@@ -1,7 +1,7 @@
 ---
 title: 琥珀
 category: shixing
-tags: [散文, 柏吉尔, 外国文学, 语文]
+tags: [散文, 柏吉尔, 外国文学, 语文, 小学]
 date: "2026-09-25T01:06:00+08:00"
 author: 柏吉尔
 written: 选自人教版语文四年级下册
