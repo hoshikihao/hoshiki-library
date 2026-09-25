@@ -2,23 +2,254 @@
 # 字段：title / author / cover / status(reading|read|want) / note / tags（可选，字符串数组）
 # cover 可用 /covers/xxx.svg（放 public/covers/）或远程图片 URL
 
-zhi-shen-shi-nei:
-  title: 置身事内
-  author: 兰小欢
-  cover: https://neodb.social/m/book/2021/09/157839fbbf-3454-4b26-bebf-7aed668ab35f.jpg
+shen-congwen-xiaoshuo-quanji:
+  title: 沈从文小说全集
+  author: 沈从文
+  cover: https://neodb.social/m/book/2022/06/01845c718d-5e6a-4770-9911-4e8e07240849.jpg
   status: read
-  note: 把地方政府的钱从哪来、到哪去讲得清清楚楚。
+  note: 湘西的水、船和人，写得干净又哀伤。最喜欢《边城》《萧萧》《丈夫》《龙朱》《三三》。
 
-wan-li:
-  title: 万历十五年
-  author: 黄仁宇
-  cover: https://neodb.social/m/book/2021/09/1535080f33-7dd8-465f-b924-ace42d2978e0.jpg
-  status: reading
-  note: 一个看似平淡的年份，如何照出整个体制的困局。
+ci-jian-de-shao-nian:
+  title: 此间的少年
+  author: 江南
+  cover: https://neodb.social/m/book/2021/09/1847ff4fe1-b217-47f7-8d22-ffb779f554b8.jpg
+  status: read
+  note: 把金庸人物放进北大校园，写一段大学青春。
 
-xiang-tu-zhong-guo:
-  title: 乡土中国
-  author: 费孝通
-  cover: https://neodb.social/m/book/2021/09/1502bcc812-5961-47d1-ba7a-b196a35f99cd.jpg
-  status: want
-  note: 想弄明白“熟人社会”这四个字到底意味着什么。
+hong-lou-meng:
+  title: 红楼梦（程乙本）
+  author: 曹雪芹
+  cover: /covers/hong-lou-meng.webp
+  status: read
+  note: 程乙本一百二十回，理想国复刻台湾桂冠版，启功注释本为底本。
+
+san-yan:
+  title: 三言
+  author: 冯梦龙
+  cover: https://neodb.social/m/book/2021/12/13026064f3-990c-4638-9900-6ed4bbded21e.jpg
+  status: read
+  note: 喻世明言、警世通言、醒世恒言，明代市井人情。
+
+wo-zai-bei-ji-guang-xia:
+  title: 我在北极光下
+  author: 人民教育出版社中学语文室
+  cover: https://neodb.social/m/book/2021/12/11f1e07abb-2aaf-4af7-9eff-8bbb74d52662.jpg
+  status: read
+  note: 初中语文自读课本第一册。
+
+python-crash-course:
+  title: Python Crash Course
+  author: Eric Matthes
+  cover: https://neodb.social/m/book/2021/12/06f7bb9141-398b-4256-932e-2d6f636c8360.jpg
+  status: read
+  note: Python 入门，从基础语法一路做到小项目。
+
+wei-qi-ren-sheng:
+  title: 围棋人生
+  author: 聂卫平
+  cover: https://neodb.social/m/book/2021/10/22b4a1ebdc-3860-4d4d-bb4f-5b037aa14f2f.jpg
+  status: read
+  note: 聂卫平口述自己的棋手生涯。
+
+han-han-1988:
+  title: 1988：我想和这个世界谈谈
+  author: 韩寒
+  cover: https://neodb.social/m/book/2021/09/13df67c77c-7af8-4ffd-8812-b7df074339d8.jpg
+  status: read
+  note: 一辆 1988 年的旅行车，一路开一路讲往事。
+
+wo-suo-li-jie-de-sheng-huo:
+  title: 我所理解的生活
+  author: 韩寒
+  cover: https://neodb.social/m/book/2021/09/153d97bb41-b116-4150-834c-aa6eb2ed5ea6.jpg
+  status: read
+  note: 韩寒的杂文随笔集，谈写作、赛车和生活。
+
+du-chang-tuan:
+  title: 独唱团（第一辑）
+  author: 韩寒 主编
+  cover: https://neodb.social/m/book/2021/11/2872a3b2e8-89ff-4638-8634-4ddea71a11e8.jpg
+  status: read
+  note: 韩寒主编的文艺杂志，2010 年只出了这一期。
+
+ta-de-guo:
+  title: 他的国
+  author: 韩寒
+  cover: https://neodb.social/m/book/2021/10/248d6c443b-44d2-42a2-af9f-d6801cc29922.jpg
+  status: read
+  note: 小镇青年左小龙骑着摩托，在亭林镇的荒诞里横冲直撞。
+
+cao:
+  title: 草
+  author: 韩寒
+  cover: https://neodb.social/m/book/2021/12/049076d6b8-cb98-40ba-b9e2-95e011a5387f.jpg
+  status: read
+  note: 韩寒的杂文随笔集。
+
+han-shi-ba-jin:
+  title: 寒·十八禁
+  author: 韩寒
+  cover: https://neodb.social/m/book/2021/12/04a2d48338-2a0c-4c24-a004-959d254833c1.jpg
+  status: read
+  note: 韩寒的杂文随笔集。
+
+hen-gao-xing-jian-dao-ni:
+  title: 很高兴见到你
+  author: 韩寒 主编
+  cover: https://neodb.social/m/book/2021/09/161b6d0376-c87f-4cfd-bb65-eecc23a2a512.jpg
+  status: read
+  note: 《一个》系列 MOOK 第一辑，收了韩寒、李娟、蔡崇达等人的 28 篇文章。
+
+xiang-xing-san-ji:
+  title: 湘行散记
+  author: 沈从文
+  cover: https://neodb.social/m/book/2021/10/12ad28bea0-f6c0-4d96-8824-f52dea9a97c9.jpg
+  status: read
+  note: 1934 年回湘西探亲，一路沿沅水写下的散文。
+
+lu-xun-quan-ji:
+  title: 鲁迅全集
+  author: 鲁迅
+  cover: https://neodb.social/m/item/goodreads/2023/12/09/d9aa645c-424f-4a54-b8c5-68786b5f6266.jpg
+  status: read
+  note: 人民文学出版社 2005 年修订版，看过大部分。最喜欢《野草》《朝花夕拾》《坟》。
+
+han-han-za-wen-ji:
+  title: 韩寒杂文集（套装共7册）
+  author: 韩寒
+  cover: /covers/hanhan-zawenji.jpg
+  status: read
+  note: 杂的文、可爱的洪水猛兽、青春、我所理解的生活、零下一度、就这么漂来漂去、通稿二零零三。
+
+han-han-zuo-pin-ji:
+  title: 韩寒作品集（全14册）
+  author: 韩寒
+  cover: /covers/hanhan-zuopinji.jpg
+  status: read
+  note: 七部长篇加七部杂文随笔，从《三重门》到《我所理解的生活》。
+
+wang-xiao-bo-quan-ji:
+  title: 王小波全集
+  author: 王小波
+  cover: https://neodb.social/m/item/doubanbook/2025/03/11/f48f3a45-c880-473a-8c64-fbc831a7750f.jpg
+  status: read
+  note: 最喜欢时代三部曲、《沉默的大多数》《一只特立独行的猪》《绿毛水怪》《寻找无双》《红拂夜奔》。
+
+shao-nian-yin-shua-gong:
+  title: 少年印刷工
+  author: 茅盾
+  cover: /covers/shao-nian-yin-shua-gong.jpg
+  status: read
+  note: 茅盾写给少年的小说，辍学少年赵元生在印刷厂里做学徒、慢慢长大。
+
+pu-liu-ren-jia:
+  title: 蒲柳人家
+  author: 刘绍棠
+  cover: https://neodb.social/m/book/2021/10/2571c9272f-9788-4176-9226-c0965293db6b.jpg
+  status: read
+  note: 京东运河边的乡土小说，写北运河两岸的人情风俗。
+
+ping-fan-de-shi-jie:
+  title: 平凡的世界
+  author: 路遥
+  cover: /covers/ping-fan-de-shi-jie.jpg
+  status: read
+  note: 孙少安、孙少平兄弟在黄土高原上的奋斗，写 1975 到 1985 年的陕北城乡。
+
+xiong-di:
+  title: 兄弟
+  author: 余华
+  cover: https://neodb.social/m/book/2021/09/1655e2a603-09a5-49ea-a942-f91b656d81fa.jpg
+  status: read
+  note: 李光头和宋钢两兄弟，从文革一路写到改革开放后的荒诞年代。
+
+xu-san-guan-mai-xue-ji:
+  title: 许三观卖血记
+  author: 余华
+  cover: https://neodb.social/m/book/2021/09/16573efe00-fcb2-44d8-803a-538702f09986.jpg
+  status: read
+  note: 许三观一次次卖血，撑起一家人的日子。
+
+mo-yan-duan-pian-xiao-shuo-quan-ji:
+  title: 莫言短篇小说全集
+  author: 莫言
+  cover: https://neodb.social/m/book/2021/11/02c2e24aba-1e81-403e-9a5b-038112c6af5e.jpg
+  status: read
+  note: 最喜欢《透明的红萝卜》《白狗秋千架》。
+
+su-shi-qi-ren:
+  title: 俗世奇人
+  author: 冯骥才
+  cover: https://neodb.social/m/book/2021/09/161acf427c-3f03-4efb-9af9-07ebb19f071e.jpg
+  status: read
+  note: 清末民初天津卫的各路奇人，一篇一个，短小利落。
+
+qi-wang:
+  title: 棋王·树王·孩子王
+  author: 阿城
+  cover: https://neodb.social/m/item/doubanbook/2025/11/29/604e8c69-b3cc-4582-ac69-6bc2c28057c7.jpg
+  status: read
+  note: 阿城的知青三部中篇，棋呆子王一生、砍树的肖疙瘩、教书的老杆。
+
+wei-ren-min-fu-wu:
+  title: 为人民服务
+  author: 阎连科
+  cover: https://neodb.social/m/book/2022/01/28c066d334-ef60-46a4-8cf4-90c3b94fa151.jpg
+  status: read
+  note: 阎连科的中篇，大陆未出版，最早在香港出单行本。
+
+cao-fang-zi:
+  title: 草房子
+  author: 曹文轩
+  cover: /covers/cao-fang-zi.jpg
+  status: read
+  note: 油麻地小学的桑桑和秃鹤、纸月、细马们，六年的童年时光。
+
+huai-xiang-de-hai-zi:
+  title: 槐乡的孩子
+  author: 人民教育出版社小学语文室
+  cover: /covers/huai-xiang-de-hai-zi.jpg
+  status: read
+  note: 小学语文第九册自读课本。
+
+hong-yun-shan:
+  title: 红云杉
+  author: 人民教育出版社小学语文室
+  cover: /covers/hong-yun-shan.jpg
+  status: read
+  note: 小学语文第七册自读课本。
+
+chun-tian-de-yu-dian:
+  title: 春天的雨点
+  author: 人民教育出版社小学语文室
+  cover: /covers/chun-tian-de-yu-dian.jpg
+  status: read
+  note: 小学语文第十二册自读课本。
+
+zai-shan-de-na-bian:
+  title: 在山的那边
+  author: 人民教育出版社中学语文室
+  cover: /covers/zai-shan-de-na-bian.jpg
+  status: read
+  note: 初中语文第三册自读课本。
+
+qiu-zhi-ru-cai-jin:
+  title: 求知如采金
+  author: 人民教育出版社中学语文室
+  cover: /covers/qiu-zhi-ru-cai-jin.jpg
+  status: read
+  note: 初中语文第五册自读课本。
+
+chun-tian-de-lei-yu:
+  title: 春天的雷雨
+  author: 人民教育出版社中学语文室
+  cover: /covers/chun-tian-de-lei-yu.jpg
+  status: read
+  note: 初中语文第六册自读课本。
+
+yu-wen-di-yi-ce:
+  title: 语文 第一册
+  author: 人民教育出版社小学语文室
+  cover: /covers/yu-wen-di-yi-ce.jpg
+  status: read
+  note: 九年义务教育六年制小学语文课本第一册。
