@@ -120,6 +120,7 @@
 - 加书:`src/data/books.yaml` 追加一条
 - 加片:`src/data/films.yaml` 追加一条
 - push 到 `main` 即触发 Cloudflare Workers Builds 构建部署
+- 提交时只 `git add` 本次改动的具体文件，不用 `git add -A` / `git add .` / `git commit -a`；工作区里不是本次改动的文件不碰；提交说明列全本次改动
 
 ## 部署
 
