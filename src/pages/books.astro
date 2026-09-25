@@ -6,7 +6,12 @@ import BookShelf from '../components/BookShelf.astro';
 import SearchHighlight from '../components/SearchHighlight.astro';
 import { BOOK_BOT } from '../consts';
 
-const books = await getCollection('books');
+// 按作者拼音排序，同作者（含同一套课本）聚在一起，再按书名排
+const books = (await getCollection('books')).sort(
+  (a, b) =>
+    a.data.author.localeCompare(b.data.author, 'zh') ||
+    a.data.title.localeCompare(b.data.title, 'zh'),
+);
 
 const counts = { reading: 0, read: 0, want: 0 };
 for (const b of books) counts[b.data.status]++;

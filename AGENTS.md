@@ -85,6 +85,7 @@
 - `tags` 可选,字符串数组,与文章标签共用 `/tags` 聚合页
 - `status` 取值 `reading` | `read` | `want`
 - `note` 一句话短评
+- 书林页按 `author` 拼音排序，同作者再按 `title` 排序；同一作者或同一套书的 `author` 写法保持一致
 - 不提供每本书的下载链接;书林页顶部是 Anna's Archive / Z-Library / Telegram bot 小树 三个统一入口,不针对单本书
 
 ## 影视字段
