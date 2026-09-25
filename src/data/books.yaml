@@ -253,3 +253,31 @@ yu-wen-di-yi-ce:
   cover: /covers/yu-wen-di-yi-ce.jpg
   status: read
   note: 九年义务教育六年制小学语文课本第一册。
+
+wo-men-sa:
+  title: 我们仨
+  author: 杨绛
+  cover: https://neodb.social/m/book/2021/09/156980c8d1-97de-4a64-9e9e-2a3702f0edc6.jpg
+  status: read
+  note: 杨绛晚年回忆和钱锺书、女儿钱瑗一家三口的日子。
+
+zou-dao-ren-sheng-bian-shang:
+  title: 走到人生边上
+  author: 杨绛
+  cover: https://neodb.social/m/book/2021/11/285b31d523-dbfa-4f2b-bdfc-e73e5509591e.jpg
+  status: read
+  note: 杨绛九十多岁时自问自答，想人生、灵魂和死亡。
+
+wei-cheng:
+  title: 围城
+  author: 钱锺书
+  cover: https://neodb.social/m/book/2021/09/134f990af9-f573-486d-b339-34dd5ee48506.jpg
+  status: read
+  note: 方鸿渐留洋归来，在婚姻和职场的围城里进进出出。
+
+guan-zhui-bian:
+  title: 管锥编
+  author: 钱锺书
+  cover: https://neodb.social/m/book/2022/05/096ebb6116-fa42-4b8e-ab41-f50cccae9332.jpg
+  status: reading
+  note: 钱锺书以文言札记的形式，读十部古籍，旁征博引中西典籍。
