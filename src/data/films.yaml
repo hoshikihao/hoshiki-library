@@ -50,3 +50,164 @@ cheng_nan_jiu_shi:
   poster: /posters/cheng_nan_jiu_shi.jpg
   type: movie
   note: 沈洁演的英子，一曲《送别》，老北京胡同里一场接一场的离别。
+
+stranger_things:
+  title: 怪奇物语
+  director: 达菲兄弟
+  poster: /posters/stranger_things.jpg
+  type: series
+  note: 八十年代美国小镇，一群骑单车的孩子找失踪的伙伴，撞进了颠倒世界。
+
+love_death_robots:
+  title: 爱，死亡和机器人
+  director: 蒂姆·米勒
+  poster: /posters/love_death_robots.jpg
+  type: anime
+  note: 成人向动画短片合集，每集一种画风、一个脑洞。
+
+zhui_bu_1976:
+  title: 追捕
+  director: 佐藤纯弥
+  poster: /posters/zhui_bu_1976.jpg
+  type: movie
+  note: 高仓健演被诬陷的检察官杜丘，七十年代末在国内万人空巷的日本片。
+
+black_mirror:
+  title: 黑镜
+  director: 查理·布鲁克
+  poster: /posters/black_mirror.jpg
+  type: series
+  note: 每集一个独立故事，把科技推到极端，照出人性的阴暗面。
+
+huang_hun_de_qing_bing_wei:
+  title: 黄昏的清兵卫
+  director: 山田洋次
+  poster: /posters/huang_hun_de_qing_bing_wei.jpg
+  type: movie
+  note: 幕末一个每到黄昏就回家照顾女儿和老母的下级武士，被迫拔刀的一战。
+
+chun_xiao_ku_duan:
+  title: 春宵苦短，少女前进吧！
+  director: 汤浅政明
+  poster: /posters/chun_xiao_ku_duan.jpg
+  type: anime
+  note: 京都一夜，黑发少女一路喝酒闯荡，暗恋她的学长一路追。
+
+ku_jin_gan_lai:
+  title: 苦尽柑来遇见你
+  director: 金元锡
+  poster: /posters/ku_jin_gan_lai.jpg
+  type: series
+  note: 济州岛爱纯和宽植的一生，从少年到白头，四季一样苦尽甘来。
+
+first_kiss_2025:
+  title: 初吻
+  director: 塚原亚由子
+  poster: /posters/first_kiss_2025.jpg
+  type: movie
+  note: 丈夫意外去世后，妻子穿越回十五年前两人初遇的夏天，想改写他的命运。
+
+dong_gong_xi_gong:
+  title: 东宫西宫
+  director: 张元
+  poster: /posters/dong_gong_xi_gong.jpg
+  type: movie
+  note: 公园派出所的一夜审讯，警察和同性恋作家之间的权力与欲望。
+
+he_bian_de_cuo_wu:
+  title: 河边的错误
+  director: 魏书钧
+  poster: /posters/he_bian_de_cuo_wu.jpg
+  type: movie
+  note: 改编余华小说，小镇河边连环命案，查案的警察自己先陷了进去。
+
+huo_zhe:
+  title: 活着
+  director: 张艺谋
+  poster: /posters/huo_zhe.jpg
+  type: movie
+  note: 葛优演福贵，从败家子到送走一个个亲人，只剩一头老牛和活着本身。
+
+qi_wang_1991:
+  title: 棋王
+  director: 徐克、严浩
+  poster: /posters/qi_wang_1991.jpg
+  type: movie
+  note: 梁家辉演王一生，把阿城的《棋王》和张系国的《棋王》拼成两岸两个时代。
+
+wei_ren_min_fu_wu:
+  title: 为人民服务
+  director: 张哲洙
+  poster: https://neodb.social/m/movie/2022/03/0880e4efc7-249a-4c67-af83-d733487e85a1.jpg
+  type: movie
+  note: 改编阎连科小说，背景搬到虚构的朝鲜式军营，师长夫人和勤务兵的禁忌之恋。
+
+gu_ling_jie:
+  title: 牯岭街少年杀人事件
+  director: 杨德昌
+  poster: https://neodb.social/m/movie/2022/01/012e0638a2-513f-40ad-8a6f-0fb7b7cfa935.jpg
+  type: movie
+  note: 六十年代台北，少年小四和小明，四个小时拍一个时代怎么把人逼到绝处。
+
+seediq_bale:
+  title: 赛德克·巴莱
+  director: 魏德圣
+  poster: /posters/seediq_bale.jpg
+  type: movie
+  note: 1930 年雾社事件，莫那·鲁道带领赛德克族对日本殖民者的最后一战。
+
+nie_yin_niang:
+  title: 刺客聂隐娘
+  director: 侯孝贤
+  poster: /posters/nie_yin_niang.jpg
+  type: movie
+  note: 舒淇演唐代女刺客，奉命刺杀青梅竹马的表哥，最后选择不杀。
+
+biao_jie_ni_hao_ye:
+  title: 表姐，你好嘢！
+  director: 张坚庭
+  poster: /posters/biao_jie_ni_hao_ye.jpg
+  type: movie
+  note: 郑裕玲演内地女公安表姐，到香港办案，一路南北笑料。
+
+hei_chu_you_shen_me:
+  title: 黑处有什么
+  director: 王一淳
+  poster: /posters/hei_chu_you_shen_me.jpg
+  type: movie
+  note: 九十年代北方小城的连环奸杀案，一个少女在其中的懵懂成长。
+
+hua_yang_nian_hua:
+  title: 花样年华
+  director: 王家卫
+  poster: /posters/hua_yang_nian_hua.jpg
+  type: movie
+  note: 六十年代香港，周慕云和苏丽珍，旗袍、窄巷与没说出口的心事。
+
+chong_qing_sen_lin:
+  title: 重庆森林
+  director: 王家卫
+  poster: /posters/chong_qing_sen_lin.jpg
+  type: movie
+  note: 两段失恋警察的故事，过期凤梨罐头和《California Dreamin'》。
+
+dong_xie_xi_du:
+  title: 东邪西毒
+  director: 王家卫
+  poster: /posters/dong_xie_xi_du.jpg
+  type: movie
+  note: 借金庸人物讲欧阳锋在大漠里的一年，人人都困在各自的执念里。
+
+dong_cheng_xi_jiu:
+  title: 射雕英雄传之东成西就
+  director: 刘镇伟
+  poster: /posters/dong_cheng_xi_jiu.jpg
+  type: movie
+  note: 《东邪西毒》超支时原班人马赶拍的贺岁片，王家卫监制，一群大明星一本正经地胡闹。
+
+duo_luo_tian_shi:
+  title: 堕落天使
+  director: 王家卫
+  poster: /posters/duo_luo_tian_shi.jpg
+  type: movie
+  note: 杀手、搭档和哑巴何志武，夜色里的香港，广角镜头下的孤独。
