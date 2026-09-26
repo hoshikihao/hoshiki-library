@@ -1,7 +1,7 @@
 ---
 title: 西江月·夜行黄沙道中
 category: shixing
-tags: [词, 辛弃疾, 语文, 小学]
+tags: [词, 辛弃疾, 语文, 小学, 初中]
 date: "2026-09-25T21:12:00+08:00"
 author: 宋·辛弃疾
 written: 选自语文六年级上册
