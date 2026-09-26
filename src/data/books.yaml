@@ -386,3 +386,17 @@ hu-lan-he-zhuan:
   cover: /covers/hu-lan-he-zhuan.jpg
   status: read
   note: 萧红回望呼兰小城的童年，祖父的后花园、团圆媳妇、有二伯，热闹里全是荒凉。
+
+lidai-zhuangyuan-wenzhang-huibian:
+  title: 历代状元文章汇编
+  author: 洪钧
+  cover: /covers/lidai-zhuangyuan-wenzhang-huibian.jpg
+  status: want
+  note: 历代状元的策论、诗文汇为一编，看科举顶尖人物的文章到底什么水准。
+
+zhongguo-lidai-zhuangyuan-wenzhang-jingxuan:
+  title: 中国历代状元文章精选
+  author: 牛宏岩
+  cover: /covers/zhongguo-lidai-zhuangyuan-wenzhang-jingxuan.jpg
+  status: want
+  note: 唐宋至明清状元文章选本，附人物小传与注释，适合通读。
