@@ -211,3 +211,108 @@ duo_luo_tian_shi:
   poster: /posters/duo_luo_tian_shi.jpg
   type: movie
   note: 杀手、搭档和哑巴何志武，夜色里的香港，广角镜头下的孤独。
+
+yi_he_yuan:
+  title: 颐和园
+  director: 娄烨
+  poster: /posters/yi_he_yuan.jpg
+  type: movie
+  note: 八十年代末北京的大学校园，余虹和周伟从相爱到离散的十几年。
+
+xiu_chun_dao_2:
+  title: 绣春刀Ⅱ：修罗战场
+  director: 路阳
+  poster: /posters/xiu_chun_dao_2.jpg
+  type: movie
+  note: 第一部的前传，锦衣卫沈炼卷进天启年间的宫廷阴谋，身不由己。
+
+lan_se_da_men:
+  title: 蓝色大门
+  director: 易智言
+  poster: /posters/lan_se_da_men.jpg
+  type: movie
+  note: 台北夏天的高中女生孟克柔和游泳队男生张士豪，十七岁不确定的喜欢。
+
+the_graduate:
+  title: 毕业生
+  director: 迈克·尼科尔斯
+  poster: /posters/the_graduate.jpg
+  type: movie
+  note: 刚毕业的本杰明被罗宾逊太太引诱，又爱上她的女儿，结尾那辆大巴上的茫然。
+
+qian_nian_nv_you:
+  title: 千年女优
+  director: 今敏
+  poster: /posters/qian_nian_nv_you.jpg
+  type: anime
+  note: 隐退的老影星回忆一生，戏里戏外穿越千年，只为追一个只见过一面的人。
+
+mei_li_ren_sheng:
+  title: 美丽人生
+  director: 罗伯托·贝尼尼
+  poster: /posters/mei_li_ren_sheng.jpg
+  type: movie
+  note: 犹太父亲在集中营里把一切说成游戏，护住儿子的童年。
+
+young_sheldon:
+  title: 小谢尔顿
+  director: 查克·罗瑞
+  poster: /posters/young_sheldon.jpg
+  type: series
+  note: 《生活大爆炸》谢尔顿的童年，九岁天才在得州小镇读高中。
+
+bai_ri_de_lang_jun:
+  title: 百日的郎君
+  director: 李宗宰
+  poster: /posters/bai_ri_de_lang_jun.jpg
+  type: series
+  note: 失忆的世子流落民间，成了村里老姑娘的百日郎君，一场古装错位爱情。
+
+la_lang_pei:
+  title: 拉郎配
+  director: 黄祖权
+  poster: /posters/la_lang_pei.jpg
+  type: movie
+  note: 改编自《初刻拍案惊奇》，明代呆秀才遇上急着出嫁的蛮横小姐，一路乱点鸳鸯。
+
+shi_qi_sui_de_dan_che:
+  title: 十七岁的单车
+  director: 王小帅
+  poster: /posters/shi_qi_sui_de_dan_che.jpg
+  type: movie
+  note: 进城打工的快递少年和胡同里的中学生，为了一辆山地车扭打在一起。
+
+fresh_off_the_boat:
+  title: 初来乍到
+  director: 纳赫纳金·汗
+  poster: /posters/fresh_off_the_boat.jpg
+  type: series
+  note: 九十年代台湾移民一家搬到奥兰多开牛排馆，黄家小子在美国郊区长大。
+
+sherlock:
+  title: 神探夏洛克
+  director: 马克·加蒂斯、史蒂文·莫法特
+  poster: /posters/sherlock.jpg
+  type: series
+  note: 福尔摩斯搬到当代伦敦，发短信、用博客，和华生一起破案。
+
+minority_report:
+  title: 少数派报告
+  director: 史蒂文·斯皮尔伯格
+  poster: /posters/minority_report.jpg
+  type: movie
+  note: 2054 年能预知犯罪的系统，汤姆·克鲁斯演的警探发现自己成了下一个凶手。
+
+dead_poets_society:
+  title: 死亡诗社
+  director: 彼得·威尔
+  poster: /posters/dead_poets_society.jpg
+  type: movie
+  note: 基汀老师让学生站上课桌换个角度看世界，Carpe diem，及时行乐。
+
+xiu_chun_dao:
+  title: 绣春刀
+  director: 路阳
+  poster: /posters/xiu_chun_dao.jpg
+  type: movie
+  note: 崇祯初年三个锦衣卫结义兄弟，奉命追杀魏忠贤，各有各的难处。
