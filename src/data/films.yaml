@@ -5,14 +5,14 @@
 qian_yu_qian_xun:
   title: 千与千寻
   director: 宫崎骏
-  poster: https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg
+  poster: /posters/qian_yu_qian_xun.jpg
   type: anime
   note: 每隔几年重看一次，每次看到的东西都不一样。
 
 san_ti:
   title: 三体
   director: 杨磊
-  poster: https://image.tmdb.org/t/p/w500/buXHm2shttFRQIBsCFlv5L2TmKh.jpg
+  poster: /posters/san_ti.jpg
   type: series
   note: 原著党，看看改编能守住多少。
 
@@ -138,7 +138,7 @@ qi_wang_1991:
 wei_ren_min_fu_wu:
   title: 为人民服务
   director: 张哲洙
-  poster: https://neodb.social/m/movie/2022/03/0880e4efc7-249a-4c67-af83-d733487e85a1.jpg
+  poster: /posters/wei_ren_min_fu_wu.jpg
   type: movie
   note: 改编阎连科小说，背景搬到虚构的朝鲜式军营，师长夫人和勤务兵的禁忌之恋。
 
