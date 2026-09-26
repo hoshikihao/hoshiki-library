@@ -95,6 +95,7 @@
 - `title` `director` `poster` `type` `note` 全部必填
 - `tags` 可选,字符串数组,与文章标签共用 `/tags` 聚合页
 - `type` 取值 `anime` | `series` | `movie` | `doc`,按类型分组(不追踪观看进度)
+- 光影页每组内按 `director` 拼音排序，同导演再按 `title` 排序；同一导演的 `director` 写法保持一致
 
 ## 首页日签
 

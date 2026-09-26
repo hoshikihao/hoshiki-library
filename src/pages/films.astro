@@ -5,7 +5,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FilmShelf from '../components/FilmShelf.astro';
 import SearchHighlight from '../components/SearchHighlight.astro';
 
-const films = await getCollection('films');
+// 按导演拼音排序，同导演聚在一起，再按片名排；FilmShelf 按类型分组时保留这个顺序
+const films = (await getCollection('films')).sort(
+  (a, b) =>
+    a.data.director.localeCompare(b.data.director, 'zh') ||
+    a.data.title.localeCompare(b.data.title, 'zh'),
+);
 
 const counts = { anime: 0, series: 0, movie: 0, doc: 0 };
 for (const f of films) counts[f.data.type]++;
