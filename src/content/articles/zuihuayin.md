@@ -1,7 +1,7 @@
 ---
 title: 醉花阴
 category: shixing
-tags: [词, 李清照, 语文, 高中]
+tags: [词, 李清照, 语文, 初中, 高中]
 date: "2026-09-26T22:15:00+08:00"
 author: 宋·李清照
 written: 选自高中语文必修4
